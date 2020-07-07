@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 import json
+from datetime import datetime
 
 import os.path
 import os
@@ -14,7 +15,7 @@ gc = gspread.service_account(filename=os.path.join(BASE_DIR, 'kazagrofood-dfd69b
 
 def next_available_row(worksheet):
     str_list = list(filter(None, worksheet.col_values(1)))
-    return str(len(str_list)+1)
+    return len(str_list)+1
 
 def main():
 
@@ -46,29 +47,45 @@ def index(request):
 
 def addRow(request):
     if request.is_ajax and request.method == "POST":
-        
-        sh = gc.open_by_key("1SKkUZPHRkUykdsfuRyFFT7LK_M8EFCqJDVi8UmQzi2c")
+        sh = gc.open_by_key("10W1gWd0Ftzb6iXuW1o9b1U4kLo_bpB9Em6V6oiSOweo")
         worksheet = sh.get_worksheet(1)
+        # worksheet.resize(1)
+
         data = json.loads(request.POST.get('dada'))
         name = request.POST.get('name')
         address = request.POST.get('address')
         area = request.POST.get('area')
         phone = request.POST.get('phone')
-        res = []
+
+        ind = next_available_row(worksheet) + 3
+        dateTimeObj = datetime.now()
+        ddd = dateTimeObj.strftime("%d.%M.%Y %H:%M:%S")
+        print(ind, ddd)
+        
+        summ = 0
+        res = [ind-4, ddd]
         for i in data:
             if i['count'] > 0:
+                summ += int(i['price'].replace(" ", "")) * i['count']
                 res.append(i['count'])
             else:
                 res.append("")
-        for i in range(78-len(data)):
+        for i in range(79-len(data)):
             res.append("")
+        res.append(summ)
         res.append(name)
         res.append(area)
         res.append(address)
         res.append(phone)
-        print(res)
-        # worksheet.append_row(res, table_range='A:CM')
-        # print(request.POST.get('data'))
+        print(summ)
+        
+        ranges = "A{}:CL{}".format(ind, ind)
+        # print(worksheet.row_values(1))
+        # print(ranges)
 
+        # sh.values_append('оптовая!{}'.format(ind),{'valueInputOption': 'USER_ENTERED'}, {'values': res})
+        # worksheet.append_row(res, table_range=ranges)
+
+        worksheet.update(ranges, [res])
         return JsonResponse({"status": "ok"})
 
