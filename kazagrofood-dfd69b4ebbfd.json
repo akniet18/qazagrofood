@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "kazagrofood",
+  "key": "AIzaSyDVyyiD07wzQ1geYMHAZqe6PMVM2A_TQKg",
+  "private_key_id": "dfd69b4ebbfd9743e59ece4a8db2b44878fd877b",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCdakKspVMOYo6c\nVdSs3PkObH/XUp/bhDRNKYi7yAFnrtVCT7aiRc957+vhBf2Bz3aAWBbxTvt7ukPm\ne+Gejvp/y9EUFT3OIjg7ApltTnDR1dkG0txf5ALHAUnEi7+RFtwp37hGJr+K8G6p\nDiviU2VCFMA7/ZQoMSk46RsN8lDnM9ctZby65FDZo/NHgAJtoxz1ilXN4cQvRhzc\nj7YylIYti4wb35ZJGdOR96CtMkGz7Ad72MzMFSDHEgaDK05GFeYuqeKKReVn3qlj\nrgsW3pP2tX/crE+LIbkkBI5vTBB7M69zsL8TR3lfRFTlJyLEKOrSe+b1fyaeHyfO\nX9q5GzjjAgMBAAECggEAAVd9uGFkX/z3jMvH1EBsmeZxzy9VWTTx/cDccywqc3iz\naeQYJbfCI8lSLQ793rYatXpmK9rFNSK7RGL1dZrFJsxI2zt9mEeXcFjyUxXcOS5r\n4rmflgTlSVr2pWLzv+BTrGEIg/oWAR5duHCa0SerNDEihG+gYDEKs7gaFb5M33oZ\nH93+T2Cg4UG/J3QiZoznTC2aQ864aucVLC9Pn96JtK2tCf2moy0nKWbqtkBOvyEj\nJIRaLgxbgL8VvDnJnmgog6RgiqsJkjHtzbjgKCG8qYCalLpMvTx7kQ3pLIAenUNJ\nqqT5rhyfE4qLpH/mGnBrB9+Kx0rt19l6qCHwrdodGQKBgQDQxvxvt82T8Y+l+SiN\nytovXIpIS2KU2W/Kwo+MNOG5GkLylFy8i8EACkz7I1MzyCAgPLyycJ/NK+9+S8a8\nKfil4D4RaiUVeC7Kax8gdafbEnbDAGvXjkxkKiEgF8xxnOU+7lI9EMb9sTw7y6oW\n2hKWGwieX/lR5BodhdXsG78brwKBgQDBBTQU7szcHyfoHEeMXtfLH9JkuJRsltt1\nSa3v1rFQwyw6n4btWZVLV9bZufskFsC27+hCuE6UPYfUaMF/MBjFJOu+W/ZHl33E\nYFy8jxsq5FHQ6oNQuStLPLru1zjihHxzscoTOHY0rp6cbby10oq2nCC8XN/lTdm7\nAWhTDMV/DQKBgQDBnrlANpruSImrKF6G2YjtgYoxL9CWMO0vgq60Hdr02rkZ1aQH\nrChqjCMGiaVBEalRnGJ3rmFVWxi57Ta7DMWvuD530hPgTFxAl4X/iX4Jep8vi7V3\n7F1GS5f69ndBKnukmEsmnOefIX62CdSNauLv2NRuZJ2JZ90cYiGZ3cWnuwKBgChc\ndi+KX7wHp8iZYTyw+F65IL1++0pZoTo9Vem48wr4RN9dTFGFUfqXO437ndBGEbYv\nJFoPQB8vXp/D5/I4lHVk6wa7JByESQAvRjUHl564b4NIBn1yuuLYqB4ZUwPKwFtQ\n6fhq7gzGFtSO/c7nX6ofq5i3svm39bds6+ux1/phAoGBAM0J7dn5f3w92FoHctWo\nQocujRDOin62j4Q66s2Q1UtARXUkg/K97SNt1gLnrnQfMsptC17mApF/ZWQ64r4g\ni3/Jm353fDCdWZ7LOpGMHJIEA8Dv2NvoThFF2vP6bb0dzY2DNGJOB4uQVe6rTxOx\nmGAeOY0edmEFc4mhgVkUv40/\n-----END PRIVATE KEY-----\n",
+  "client_email": "kazagrofoods@kazagrofood.iam.gserviceaccount.com",
+  "client_id": "100556387209390751893",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/kazagrofoods%40kazagrofood.iam.gserviceaccount.com"
+}

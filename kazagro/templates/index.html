@@ -1,0 +1,139 @@
+{% load static %}
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>index</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    
+</head>
+
+<body>
+    <div class="wrapper">
+        {% block content %}
+        {% endblock content %}
+        <div class="gridLayout">
+            {% for i in data %}
+                <div class="block">
+                    <div class="action">
+                        <div class="name">{{i.name}}</div>
+                        <div class="action_top">
+                            <div class="minus"  id="action_minus_" onClick="minus({{forloop.counter}})">-</div>
+                            <div class="count" id="count_${i}">{{i.count}}</div>
+                            <div class="plus" id="action_plus_" onClick="plus({{forloop.counter}})">+</div>
+                        </div>
+                        <div class="price">{{i.price}} ₸ </div>
+                    </div>
+                    {% if forloop.counter == 0 %}
+                        <img class="img" src="{% static 'IMG_20200704_164449.jpg' %}"/>
+                    {% else %}
+                        <img class="img" src="{% static 'IMG_20200704_171752.jpg' %}"/>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="summ_div">Всего: <div class="summ">0</div> ₸</div>
+
+        <div class="doOrder">
+            <div onClick="doorder()">
+                Далее
+            </div>
+        </div>
+
+        <div class="modal">
+            <form>
+                {% csrf_token %}
+                <div class="close" onClick="doorder()">close</div>
+                <div class="modal_title">title</div>
+                <div class="input_name">
+                    <div><label for="name">Name:</label></div>
+                    <input placeholder="name" id="name" type="name"></input>
+                </div>
+                <div class="input_phone">
+                    <div><label for="phone">Phone:</label></div>
+                    <input placeholder="phone" id="phone" type="text"></input>
+                </div>
+
+                <div class="input_raion">
+                    <div><label for="area">Район: </label></div>
+                    <input placeholder="Район" id="area" type="text"></input>
+                </div>
+
+                <div class="input_phone">
+                    <div><label for="address">Напишите полный адрес: улица, дом, название организации:</label></div>
+                    <input placeholder="address" id="address" type="text"></input>
+                </div>
+                <div class="myorder"></div>
+                <div onClick="dodo()"><button>do order</button></div>
+            </form>
+        </div>
+    </div>
+{% block javascript %}
+{% endblock javascript %}
+
+{% comment %} <script src="{% static 'script.js' %}"></script> {% endcomment %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    data_f = {{ data|safe }};
+    let summ = 0
+
+    function minus(i){
+        i = i- 1
+        let d = document.querySelector('.summ')
+        let priced = parseInt(data_f[i].price.replace(/\s/g, ''))
+        console.log(priced)
+        if (data_f[i].count != 0){
+            data_f[i].count = data_f[i].count - 1
+            summ = summ - priced
+            d.innerText = summ
+        }        
+        let a = event.srcElement.parentNode.children[1]
+        if (a.innerText != "0"){
+            a.innerText = parseInt(a.innerText) - 1 
+        }
+    }
+    function plus(i){
+        i = i - 1
+        let a = event.srcElement.parentNode.children[1]
+        let price = parseInt(data_f[i].price.replace(/\s/g, ''))
+        a.innerText = parseInt(a.innerText) + 1 
+        data_f[i].count = data_f[i].count + 1
+        summ = summ + price
+        let d = document.querySelector('.summ')
+        d.innerText = summ
+    }
+
+    function doorder(){
+        let modal = document.querySelector('.modal')
+        let txt = ""
+        let sumall = 0
+        
+        modal.classList.toggle('show')
+    }
+
+    function dodo() {
+        event.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: "/add_row",
+            data: {
+                name:  document.querySelector('#name').value,
+                address: document.querySelector('#address').value,
+                area: document.querySelector('#area').value,
+                phone: document.querySelector('#phone').value,
+                'dada': JSON.stringify(data_f),
+                csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val(),
+            },
+            success: function (response) {
+               console.log("success")
+            },
+            error: function (response) {
+                console.log("error")                
+            }
+        })
+    }
+</script>
+</body>
+</html>

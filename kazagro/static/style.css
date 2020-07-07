@@ -1,0 +1,197 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.wrapper{
+    height: auto;
+    padding: 20px;
+    background: url("eda248be5c8a09777803ab6f76bf96a9.png") center no-repeat;
+}
+.gridLayout{
+    width: 85%;
+    margin:0 auto;
+    min-height: 100vh;
+    height: auto;
+    /* overflow: hidden; */
+    display: grid;
+    /* grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); */
+    grid-template-columns: 1fr 1fr 1fr;
+    /* grid-template-rows: repeat(auto-fill, minmax(150px, 1fr)); */
+    grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
+}
+.block{
+    height: 150px;
+    position: relative;
+}
+.action{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    display: none;
+    color: #fff;
+    background: rgba(1, 53, 16, 0.6);
+}
+.gridLayout div:hover > .action {
+    display: flex;
+}
+.action:active{
+    display: flex;
+
+}
+.show{
+    display: flex!important
+}
+.minus, .plus{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    user-select: none;
+}
+.minus:active, .plus:active{
+    font-size: 2.5em!important;
+}
+.action_top{
+    flex: 4;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 2em;
+    font-weight: bold;
+}
+.name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9em;
+    height: 35px;
+    font-weight: bold;
+    border-bottom: 1px #fff solid;
+}
+.price{
+    border-top: 1px #fff solid;
+    flex: 1;
+    height: 37px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1em;
+}
+.img{
+    width: 100%;
+    height: 100%;
+}
+
+.summ_div{
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    color: #fff;
+}
+.summ{
+    padding: 0 10px;
+}
+
+.doOrder{
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+}
+.doOrder div{
+    padding: 10px 20px;
+    border: 1px solid #EF5555;
+    width: 200px;
+    border-radius: 25px;
+    text-align: center;
+    font-size: 1.2em;
+    color: #fff;
+    background: #EF5555;
+}
+
+
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0%;
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    display: none;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.5);
+    align-items: center;
+}
+.modal form{
+    width: 55%;
+    background: #fff;
+    padding: 20px;
+    position: relative;
+}
+
+.modal form input {
+    outline: none;
+    border: 1px solid #000;
+    border-radius: 5px;
+    height: 45px;
+    width: 100%;
+    font-size: 1.1em;
+    margin: 10px 0;
+    padding: 0 10px;
+}
+.modal form button {
+    height: 45px;
+    width: 100%;
+    margin-top: 20px;
+}
+.modal form label{
+    
+}
+.modal_title{
+    font-size: 1.5em;
+    font-weight: 400;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.first{
+    background: gray;
+}
+.second{
+    background: green;
+}
+.second {
+    background: greenyellow;
+}
+.third{
+    background: hotpink;
+}
+.four {
+    background: indigo;
+}
+.five {
+    background: lavender;
+}
+.six{
+    background-color: lightsalmon;
+}
+.seven{
+    background: mediumorchid;
+}
+.eight {
+    background: powderblue;
+}
+.nine{
+    background: midnightblue;
+}

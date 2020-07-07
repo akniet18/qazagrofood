@@ -1,0 +1,35 @@
+{% load static %}
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>index</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    
+</head>
+
+<body>
+    <div class="wrapper">            
+
+        <div class="modal">
+            <form>
+                <div class="close" onClick="doorder()">close</div>
+                <div class="modal_title">title</div>
+                <div class="input_name">
+                    <div><label for="name">Name:</label></div>
+                    <input placeholder="name" id="name" type="name"></input>
+                </div>
+                <div class="input_phone">
+                    <div><label for="phone">Phone:</label></div>
+                    <input placeholder="phone" id="phone" type="text"></input>
+                </div>
+                <div class="myorder"></div>
+                <div><button>do order</button></div>
+            </form>
+        </div>
+    </div>
+
+
+</body>
+</html>
