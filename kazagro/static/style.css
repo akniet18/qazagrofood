@@ -175,3 +175,8 @@ body{
         width: 75%;
     }
 }
+@media (max-width: 570px){
+    .gridLayout{
+        width: 95%;
+    }
+}
