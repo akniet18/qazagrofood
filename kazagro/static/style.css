@@ -24,7 +24,7 @@ body{
     grid-template-rows: repeat(auto-fill, minmax(170px, 1fr));
 }
 .block{
-    height: 150px;
+    height: 100%;
     position: relative;
 }
 .action{
@@ -37,7 +37,7 @@ body{
     background: rgba(1, 53, 16, 0.6);
 }
 .gridLayout div:hover > .action {
-    display: flex;
+    display: flex!important;
 }
 .action:active{
     display: flex;
@@ -83,6 +83,9 @@ body{
     justify-content: center;
     align-items: center;
     font-size: 1.1em;
+}
+.price2{
+    margin-left: 5px;
 }
 .img{
     width: 100%;
