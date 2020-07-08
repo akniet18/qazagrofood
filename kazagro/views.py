@@ -2,13 +2,10 @@ from django.shortcuts import render
 from django.http import JsonResponse
 import json
 from datetime import datetime
-from xlsxwriter.utility import xl_col_to_name
-import requests
 
 import os.path
 import os
 import gspread
-from bs4 import BeautifulSoup
 
 
 SAMPLE_SPREADSHEET_ID = '10W1gWd0Ftzb6iXuW1o9b1U4kLo_bpB9Em6V6oiSOweo'
