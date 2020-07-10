@@ -1,0 +1,49 @@
+{% load static %}
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>index</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <div class="wrapper">
+        {% block 'content' %}
+        {% endblock %}
+        <section class="base">
+            
+            <div class="base_section">
+                <div class="base_title">
+                    Выберите раздел
+                </div>
+                 <div class="base_div">
+                    <a href="{% url 'index' 'roznica' %}">Розница</a>
+                </div>
+                <div class="base_div">
+                    <a href="{% url 'index' 'optom' %}">Оптом</a>
+                </div>
+                <div class="base_div">
+                    <a href="{% url 'index' 'partners' %}">Партнеры</a>
+                </div>
+            </div>
+           
+        </section>      
+        
+    </div>
+{% block 'javascript' %}
+{% endblock %}
+
+<script type="text/javascript">
+    function doorder(){
+        let modal = document.querySelector('.modal')
+        let txt = ""
+        let sumall = 0
+        
+        modal.classList.toggle('show')
+    }
+
+</script>
+</body>
+</html>

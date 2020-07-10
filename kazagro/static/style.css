@@ -10,10 +10,17 @@ body{
     height: fit-content;
     padding: 20px;
 }
+.section_title{
+    text-align: center;
+    font-weight: bold;
+    font-size: 2em;
+    color: #fff;
+    margin: 20px 0;
+}
 .gridLayout{
     width: 85%;
     margin:0 auto;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     /* height: auto; */
     height: 100%;
     /* overflow: hidden; */
@@ -150,6 +157,11 @@ body{
     margin: 10px 0;
     padding: 0 10px;
 }
+.error {
+    border: 1px solid red!important;
+}
+  
+
 .modal form button {
     height: 45px;
     width: 100%;
@@ -170,11 +182,64 @@ body{
     right: 10px;
 }
 
+
+.base{
+    width: 100%;
+    height: auto;
+}
+.base_section{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    border-radius: 5px;
+    height: 50%;
+    padding: 30px 10px 10px 10px;
+    border: 1px solid #000;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.base_title{
+    position: absolute;
+    top: 15px;
+    left: 0%;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+}
+.base_div{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    position: relative;
+}
+.base_div a{
+    text-decoration: none;
+    color: #333;
+    width: 90%;
+    height: 20px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    padding: 20px;
+}
+
 @media (min-width: 1000px){
     .gridLayout{
         width: 75%;
     }
 }
+
+@media (max-width: 820px){
+    .base_section{
+        width: 60%;
+    }
+}
+
 @media (max-width: 570px){
     .gridLayout{
         width: 95%;
@@ -189,5 +254,8 @@ body{
         grid-template-columns: 1fr 1fr;
         /* grid-template-rows: repeat(auto-fill, 170px);
         grid-auto-rows: fit-content(1em); */
+    }
+    .base_section{
+        width: 80%;
     }
 }
