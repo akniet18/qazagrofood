@@ -26,11 +26,10 @@
                         </div>
                         <div class="price">{{i.price}} ₸ <div class="price_{{forloop.counter}} price2"> </div></div>
                     </div>
-                    {% if forloop.counter == 0 %}
-                        <img class="img" src="https://99px.ru/sstorage/53/2013/08/tmb_77947_9228.jpg"/>
-                    {% else %}
-                        <img class="img" src="https://99px.ru/sstorage/53/2013/08/tmb_77947_9228.jpg"/>
-                    {% endif %}
+    
+                    <img class="img" src="{% static i.img %}"/>
+          
+          
                 </div>
             {% endfor %}
         </div>
@@ -48,11 +47,7 @@
                         </div>
                         <div class="price">{{i.price}} ₸ <div class="price2_{{forloop.counter}} price2"> </div></div>
                     </div>
-                    {% if forloop.counter == 0 %}
-                        <img class="img" src="https://99px.ru/sstorage/53/2013/08/tmb_77947_9228.jpg"/>
-                    {% else %}
-                        <img class="img" src="https://99px.ru/sstorage/53/2013/08/tmb_77947_9228.jpg"/>
-                    {% endif %}
+                    <img class="img" src="{% static i.img %}"/>
                 </div>
             {% endfor %}
         </div>
@@ -68,7 +63,7 @@
         <div class="modal">
             <form>
                 {% csrf_token %}
-                <div class="close" onClick="doorder()">close</div>
+                <div class="close" onClick="doorder()">&times;</div>
                 <div class="modal_title">title</div>
                 <div class="input_name">
                     <div><label for="name">Как к вам обращаться? (впишите свое Имя):</label></div>

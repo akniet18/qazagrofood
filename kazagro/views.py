@@ -37,6 +37,11 @@ def main(razdel):
     # worksheet = sh.get_worksheet(1)
     # values_name = worksheet.row_values(3)
     # values_prices = worksheet.row_values(2)
+    ovosh_img = ["Картофель урожай 2020 года.png", "Лук.png", "svekla.png", "kapusta.png", "Баклажаны.png", "kabachki.png", "Морковь.png", "Огурцы1.png", "Светофор.png",
+        "Рава.png", "potato.png", "yellowmorkov.png", "rozpotato.png", "cherri.png", "backlo.png",
+        "kapustacv.png", "Брокколи.png", "kapusta.png"
+    ]
+    fruck_img = ["apelsin.png", "apple3.png", "apple2.png", "apple1.png", "grusha.png", "banan.png"]
 
     ovosh = ['Картофель урожай 2020 года', 'Лук', 'Свекла', 'Капуста', 'Баклажаны', 'Кабачки','Морковь', 'Огурцы "Миринда"', 'Болгарский перец "Светофор"',
     'Огурцы "Рава"', 'Помидоры', 'Жёлтая морковь', 'Помидоры "Розовые Юсуповские"','Помидоры "Черри" упаковка 500 гр', 'Болгарский перец зеленый',
@@ -50,26 +55,26 @@ def main(razdel):
     for i in range(3, len(a)):
         b = a[i].find_all('td')
         if razdel == "roznica":
-            for i in ovosh:
-                if i == b[1].get_text() and b[2].get_text() == "Овощи":
-                    data1.append({'name': b[1].get_text(), 'price': b[3].get_text(), 'count': 0})
-            for i in fruck:
-                if i == b[1].get_text() and b[2].get_text() == "Фрукты":
-                    data2.append({'name': b[1].get_text(), 'price': b[3].get_text(), 'count': 0})
+            for i in range(len(ovosh)):
+                if ovosh[i] == b[1].get_text() and b[2].get_text() == "Овощи":
+                    data1.append({'name': b[1].get_text(), 'price': b[3].get_text(), 'count': 0, "img": ovosh_img[i]})
+            for i in range(len(fruck)):
+                if fruck[i] == b[1].get_text() and b[2].get_text() == "Фрукты":
+                    data2.append({'name': b[1].get_text(), 'price': b[3].get_text(), 'count': 0, "img": fruck_img[i]})
         elif razdel == "optom":
-            for i in ovosh:
-                if i == b[1].get_text() and b[2].get_text() == "Овощи":
-                    data1.append({'name': b[1].get_text(), 'price': b[5].get_text(), 'count': 0})
-            for i in fruck:
-                if i == b[1].get_text() and b[2].get_text() == "Фрукты":
-                    data2.append({'name': b[1].get_text(), 'price': b[5].get_text(), 'count': 0})
+            for i in range(len(ovosh)):
+                if ovosh[i] == b[1].get_text() and b[2].get_text() == "Овощи":
+                    data1.append({'name': b[1].get_text(), 'price': b[5].get_text(), 'count': 0, "img": ovosh_img[i]})
+            for i in range(len(fruck)):
+                if fruck[i] == b[1].get_text() and b[2].get_text() == "Фрукты":
+                    data2.append({'name': b[1].get_text(), 'price': b[5].get_text(), 'count': 0, "img": fruck_img[i]})
         else:
-            for i in ovosh:
-                if i == b[1].get_text() and b[2].get_text() == "Овощи":
-                    data1.append({'name': b[1].get_text(), 'price': b[10].get_text(), 'count': 0})
-            for i in fruck:
-                if i == b[1].get_text() and b[2].get_text() == "Фрукты":
-                    data2.append({'name': b[1].get_text(), 'price': b[10].get_text(), 'count': 0})
+            for i in range(len(ovosh)):
+                if ovosh[i] == b[1].get_text() and b[2].get_text() == "Овощи":
+                    data1.append({'name': b[1].get_text(), 'price': b[10].get_text(), 'count': 0, "img": ovosh_img[i]})
+            for i in range(len(fruck)):
+                if fruck[i] == b[1].get_text() and b[2].get_text() == "Фрукты":
+                    data2.append({'name': b[1].get_text(), 'price': b[10].get_text(), 'count': 0, "img": fruck_img[i]})
     # print(len(data1), len(data2))
             
         # if b[2].get_text() != "":
