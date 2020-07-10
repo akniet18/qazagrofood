@@ -238,6 +238,9 @@ body{
     .base_section{
         width: 60%;
     }
+    .modal form{
+        width: 60%;
+    }
 }
 
 @media (max-width: 570px){
@@ -256,6 +259,9 @@ body{
         grid-auto-rows: fit-content(1em); */
     }
     .base_section{
+        width: 80%;
+    }
+    .modal form{
         width: 80%;
     }
 }
