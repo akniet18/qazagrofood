@@ -27,8 +27,8 @@
                         <div class="price">{{i.price}} ₸ <div class="price_{{forloop.counter}} price2"> </div></div>
                     </div>
     
-                    <img class="img" src="{% static i.img %}"/>
-          
+                    {% comment %} <img class="img" src="{% static i.img %}"/> {% endcomment %}
+                    <img class="img" src="../static/{{i.img}}"/>
           
                 </div>
             {% endfor %}
@@ -47,7 +47,8 @@
                         </div>
                         <div class="price">{{i.price}} ₸ <div class="price2_{{forloop.counter}} price2"> </div></div>
                     </div>
-                    <img class="img" src="{% static i.img %}"/>
+                    {% comment %} <img class="img" src="{% static i.img %}"/> {% endcomment %}
+                     <img class="img" src="../static/{{i.img}}"/>
                 </div>
             {% endfor %}
         </div>
