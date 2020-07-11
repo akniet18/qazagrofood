@@ -1,1 +1,1 @@
-web: gunicorn kazagrodj.wsgi:application
+web: gunicorn kazagrodj.wsgi:application --log-file -
