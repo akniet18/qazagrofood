@@ -65,7 +65,7 @@
             <form>
                 {% csrf_token %}
                 <div class="close" onClick="doorder()">&times;</div>
-                <div class="modal_title">title</div>
+                {% comment %} <div class="modal_title">title</div> {% endcomment %}
                 <div class="input_name">
                     <div><label for="name">Как к вам обращаться? (впишите свое Имя):</label></div>
                     <input placeholder="Имя..." id="name" type="name"></input>
