@@ -21,7 +21,7 @@
                         <div class="name">{{i.name}}</div>
                         <div class="action_top">
                             <div class="minus"  id="action_minus_" onClick="minus({{forloop.counter}}, 1)">-</div>
-                            <div class="count" id="count_${i}">{{i.count}}кг</div>
+                            <div class="count" id="count_${i}"><span>{{i.count}}</span>кг</div>
                             <div class="plus" id="action_plus_" onClick="plus({{forloop.counter}}, 1)">+</div>
                         </div>
                         <div class="price">{{i.price}} ₸ <div class="price_{{forloop.counter}} price2"> </div></div>
@@ -42,7 +42,7 @@
                         <div class="name">{{i.name}}</div>
                         <div class="action_top">
                             <div class="minus"  id="action_minus_" onClick="minus({{forloop.counter}}, 2)">-</div>
-                            <div class="count" id="count_${i}">{{i.count}}кг</div>
+                            <div class="count" id="count_${i}"><span>{{i.count}}</span>кг</div>
                             <div class="plus" id="action_plus_" onClick="plus({{forloop.counter}}, 2)">+</div>
                         </div>
                         <div class="price">{{i.price}} ₸ <div class="price2_{{forloop.counter}} price2"> </div></div>
@@ -106,7 +106,7 @@
     function minus(i, section){
         i = i- 1
         let d = document.querySelector('.summ')
-        let a = event.srcElement.parentNode.children[1]
+        let a = event.srcElement.parentNode.children[1].children[0]
         if (section == 1){
             let priced = parseInt(data1[i].price.replace(/\s/g, ''))
             if (data1[i].count != 0){
@@ -115,7 +115,7 @@
                 d.innerText = summ
             }        
             if (a.innerText != "0"){
-                a.innerText = parseInt(a.innerText) - 1 + "кг"
+                a.innerText = parseInt(a.innerText) - 1
             }
 
             let asd = document.querySelector(`.block_${i+1} .action`)
@@ -155,11 +155,11 @@
     }
     function plus(i, section){
         i = i - 1
-        let a = event.srcElement.parentNode.children[1]
+        let a = event.srcElement.parentNode.children[1].children[0]
         let d = document.querySelector('.summ')
         if (section == 1){
             let price = parseInt(data1[i].price.replace(/\s/g, ''))
-            a.innerText = parseInt(a.innerText) + 1  + "кг"
+            a.innerText = parseInt(a.innerText) + 1
             data1[i].count = data1[i].count + 1
             summ = summ + price
             d.innerText = summ
@@ -172,7 +172,7 @@
         }
         else {
             let price = parseInt(data2[i].price.replace(/\s/g, ''))
-            a.innerText = parseInt(a.innerText) + 1  + "кг"
+            a.innerText = parseInt(a.innerText) + 1
             data2[i].count = data2[i].count + 1
             summ = summ + price
             
