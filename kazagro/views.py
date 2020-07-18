@@ -37,11 +37,11 @@ def main(razdel):
     # worksheet = sh.get_worksheet(1)
     # values_name = worksheet.row_values(3)
     # values_prices = worksheet.row_values(2)
-    ovosh_img = ["Картофель урожай 2020 года.png", "Лук.png", "svekla.png", "kapusta.png", "Баклажаны.png", "kabachki.png", "Морковь.png", "Огурцы1.png", "Светофор.png",
-        "Рава.png", "potato.png", "yellowmorkov.png", "rozpotato.png", "cherri.png", "backlo.png",
-        "kapustacv.png", "Брокколи.png", "kapusta.png"
+    ovosh_img = ["Картофель урожай 2020 года.jpg", "Лук.jpg", "svekla.jpg", "kapusta.jpg", "Баклажаны.jpg", "kabachki.jpg", "Морковь.jpg", "Огурцы1.jpg", "Светофор.jpg",
+        "Рава.jpg", "potato.jpg", "yellowmorkov.jpg", "rozpotato.jpg", "cherri.jpg", "backlo.jpg",
+        "kapustacv.jpg", "Брокколи.jpg", "kapusta.jpg"
     ]
-    fruck_img = ["apelsin.png", "apple3.png", "apple2.png", "apple1.png", "grusha.png", "banan.png"]
+    fruck_img = ["apelsin.jpg", "apple3.jpg", "apple2.jpg", "apple1.jpg", "grusha.jpg", "banan.jpg"]
 
     ovosh = ['Картофель урожай 2020 года', 'Лук', 'Свекла', 'Капуста', 'Баклажаны', 'Кабачки','Морковь', 'Огурцы "Миринда"', 'Болгарский перец "Светофор"',
     'Огурцы "Рава"', 'Помидоры', 'Жёлтая морковь', 'Помидоры "Розовые Юсуповские"','Помидоры "Черри" упаковка 500 гр', 'Болгарский перец зеленый',
