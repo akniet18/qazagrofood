@@ -15,6 +15,8 @@
         {% endblock content %}
         <div class="section_title">Овощи</div>
         <div class="gridLayout">
+            <div class="grid1"><img src="{% static '33.jpg' %}" alt=""></div>
+            <div class="grid2"><img src="{% static '332.jpg' %}" alt=""></div>
             {% for i in data1 %}
                 <div class="block block_{{forloop.counter}}">
                     <div class="action">
@@ -28,7 +30,7 @@
                     </div>
     
                     {% comment %} <img class="img" src="{% static i.img %}"/> {% endcomment %}
-                    <img class="img" src="../static/{{i.img}}"/>
+                    {% comment %} <img class="img" src="../static/{{i.img}}"/> {% endcomment %}
           
                 </div>
             {% endfor %}
@@ -36,6 +38,7 @@
         
         <div class="section_title">Фрукты</div>
         <div class="gridLayout">
+            <div class="grid3"><img src="{% static '33.jpg' %}" alt=""></div>
             {% for i in data2 %}
                 <div class="block block2_{{forloop.counter}}">
                     <div class="action">
@@ -47,10 +50,50 @@
                         </div>
                         <div class="price">{{i.price}} ₸ <div class="price2_{{forloop.counter}} price2"> </div></div>
                     </div>
-                    <img class="img" src="{% static i.img %}"/>
+                    {% comment %} <img class="img" src="{% static i.img %}"/> {% endcomment %}
                      {% comment %} <img class="img" src="../static/{{i.img}}"/> {% endcomment %}
                 </div>
             {% endfor %}
+        </div>
+
+
+        <div class="sfs">
+
+        <div class="section_title2">Фрукты</div>
+        <div class="gridLayout2">
+            {% for i in data1 %}
+                <div class="block block_{{forloop.counter}}">
+                    <div class="action">
+                        <div class="name">{{i.name}}</div>
+                        <div class="action_top">
+                            <div class="minus"  id="action_minus_" onClick="minus({{forloop.counter}}, 1)">-</div>
+                            <div class="count" id="count_${i}"><span>{{i.count}}</span>кг</div>
+                            <div class="plus" id="action_plus_" onClick="plus({{forloop.counter}}, 1)">+</div>
+                        </div>
+                        <div class="price">{{i.price}} ₸ <div class="price_{{forloop.counter}} price2"> </div></div>
+                    </div>
+    
+                    {% comment %} <img class="img" src="{% static i.img %}"/> {% endcomment %}
+                    {% comment %} <img class="img" src="../static/{{i.img}}"/> {% endcomment %}
+          
+                </div>
+            {% endfor %}
+            {% for i in data2 %}
+                <div class="block block2_{{forloop.counter}}">
+                    <div class="action">
+                        <div class="name">{{i.name}}</div>
+                        <div class="action_top">
+                            <div class="minus"  id="action_minus_" onClick="minus({{forloop.counter}}, 2)">-</div>
+                            <div class="count" id="count_${i}"><span>{{i.count}}</span>кг</div>
+                            <div class="plus" id="action_plus_" onClick="plus({{forloop.counter}}, 2)">+</div>
+                        </div>
+                        <div class="price">{{i.price}} ₸ <div class="price2_{{forloop.counter}} price2"> </div></div>
+                    </div>
+                    {% comment %} <img class="img" src="{% static i.img %}"/> {% endcomment %}
+                     {% comment %} <img class="img" src="../static/{{i.img}}"/> {% endcomment %}
+                </div>
+            {% endfor %}
+        </div>
         </div>
 
         <div class="summ_div">Всего: <div class="summ">0</div> ₸</div>

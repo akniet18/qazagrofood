@@ -3,22 +3,24 @@ body{
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
-    background: url("eda248be5c8a09777803ab6f76bf96a92.jpg") center no-repeat;
-    background-size: 100% 100%;
+    /* background: url("eda248be5c8a09777803ab6f76bf96a92.jpg") center no-repeat; */
+    /* background-size: 100% 100%; */
 }
 .wrapper{
     height: fit-content;
-    padding: 20px;
+    background: #272720;
 }
+
 .section_title{
     text-align: center;
     font-weight: bold;
     font-size: 2em;
     color: #fff;
-    margin: 20px 0;
+    padding-top: 20px;
+    margin-bottom: 20px;
 }
 .gridLayout{
-    width: 85%;
+    width: 100%;
     margin:0 auto;
     /* min-height: 100vh; */
     /* height: auto; */
@@ -28,7 +30,40 @@ body{
     /* grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); */
     grid-template-columns: 1fr 1fr 1fr;
     /* grid-template-rows: repeat(auto-fill, minmax(170px, 1fr)); */
-    grid-auto-rows: 180px;
+    grid-auto-rows: 200px;
+    position: relative;
+}
+.grid1{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 50%;
+    width: 100%;
+}
+.grid2{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 0;
+    height: 50%;
+    width: 100%;
+}
+.grid3{
+    position: absolute;
+    top: 0%;
+    left: 0;
+    z-index: 0;
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+}
+.grid1 img, .grid2 img{
+    width: 100%;
+    height: 100%;
+}
+.grid3 img{
+    width: 100%;
+    height: 150%;
 }
 .block{
     height: 100%;
@@ -43,7 +78,7 @@ body{
     color: #fff;
     background: rgba(1, 53, 16, 0.6);
 }
-.gridLayout div:hover > .action {
+.block:hover > .action {
     display: flex!important;
 }
 .action:active{
@@ -125,6 +160,7 @@ body{
     font-size: 1.2em;
     color: #fff;
     background: #EF5555;
+    margin-bottom: 20px;
 }
 
 
@@ -167,9 +203,7 @@ body{
     width: 100%;
     margin-top: 20px;
 }
-.modal form label{
-    
-}
+
 .modal_title{
     font-size: 1.5em;
     font-weight: 400;
@@ -228,10 +262,44 @@ body{
     border: 1px solid #333;
     padding: 20px;
 }
+.sfs{
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 100%;
+    height: auto;
+}
+.sfs::-webkit-scrollbar {
+width: 1em;
+}
 
+.sfs::-webkit-scrollbar-track {
+box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.sfs::-webkit-scrollbar-thumb {
+background-color: #272720;
+outline: 1px solid #272720;
+}
+.gridLayout2{
+    display: none;
+    width: 400.5%;
+    height: 80vh;
+    grid-template-columns: repeat(auto-fit, calc(100vw / 2.05));
+    grid-template-rows: 1fr 1fr 1fr;
+    background: url("33.jpg") center repeat;
+    background-size: 35% 100%;
+    background-position: top left;
+}
+.section_title2{
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
+    display: none;
+    padding: 20px;
+}
 @media (min-width: 1000px){
     .gridLayout{
-        width: 75%;
+        grid-auto-rows: 220px;
     }
 }
 
@@ -242,11 +310,17 @@ body{
     .modal form{
         width: 60%;
     }
+    .gridLayout{
+        grid-auto-rows: 180px;
+    }
 }
 
 @media (max-width: 570px){
-    .gridLayout{
-        width: 95%;
+    .gridLayout2{
+        display: grid;
+    }
+    .section_title2{
+        display: block;
     }
     .price, .minus{
         font-size: 0.9em;
@@ -254,7 +328,8 @@ body{
     .plus, .name{
         font-size: 0.8em;
     }
-    .gridLayout{
+    .gridLayout, .section_title{
+        display: none;
         grid-template-columns: 1fr 1fr;
         grid-auto-rows: 150px;
         /* grid-template-rows: repeat(auto-fill, 170px);
@@ -269,8 +344,8 @@ body{
     .action_top{
         flex:2
     }
-    body{
+    /* body{
         background: url("eda248be5c8a09777803ab6f76bf96a92.jpg") center ;
         background-size: contain;
-    }
+    }       */
 }
