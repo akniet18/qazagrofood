@@ -292,7 +292,7 @@ outline: 1px solid #272720;
     position: relative;
     display: none;
     /* width: calc(100vw * 4); */
-    height: 80vh;
+    height: 75vh;
     /* grid-template-columns: repeat(4, calc(100vw / 2)); */
     grid-template-rows: 1fr 1fr 1fr;
     grid-auto-columns: calc(100vw / 2);
