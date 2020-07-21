@@ -159,6 +159,67 @@
         }
 
     });
+
+    let gridd = document.querySelector('.gridLayout2')
+    let lastX = 0;
+    $('.gridLayout2').bind('touchstart', function(e) {
+        lastX = e.originalEvent.touches[0].clientX;
+    });
+    let firstSection = 0
+    let secondSection = wd
+    let thirdSection = wd*2
+    let fourthSection = wd*3
+    $('.gridLayout2').bind('touchmove', function (e){
+        var currentX = e.originalEvent.changedTouches[0].clientX;
+        let scrolled = $(".gridLayout2").scrollLeft()
+        let dist = lastX - currentX
+        console.log(scrolled)
+        if(dist > 30){
+            console.log("left")
+            // moved left
+            if (scrolled>firstSection+1){
+                gridd.scrollBy({
+                    left: secondSection,
+                    behavior: 'smooth'
+                })
+            }else if(scrolled > secondSection+1){
+                gridd.scrollBy({
+                    left: thirdSection,
+                    behavior: 'smooth'
+                })
+               
+            }else if(scrolled > thirdSection +1){
+                gridd.scrollBy({
+                    left: fourthSection,
+                    behavior: 'smooth'
+                })
+               
+            }
+            
+        }else if(dist < -30){
+            console.log("right")
+            // moved right
+            if (scrolled<secondSection-1){
+                gridd.scrollBy({
+                    left: firstSection,
+                    behavior: 'smooth'
+                })
+                
+            }else if(scrolled < thirdSection-1){
+                gridd.scrollBy({
+                    left: secondSection,
+                    behavior: 'smooth'
+                })
+               
+            }else if(scrolled < fourthSection -1){
+                gridd.scrollBy({
+                    left: thirdSection,
+                    behavior: 'smooth'
+                })
+            }
+        }
+    });
+
         
 
     function minus(i, section){
