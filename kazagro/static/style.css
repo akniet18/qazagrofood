@@ -271,10 +271,7 @@ body{
     overflow-y: hidden;
     width: 100%;
     height: auto;
-    scroll-snap-type: x proximityno;
-    -webkit-scroll-snap-points-y: repeat(100vh);
-    -ms-scroll-snap-points-y: repeat(100vh);
-      scroll-snap-points-y: repeat(100vh);
+    scroll-snap-type: x proximity;
 } */
 .gridLayout2::-webkit-scrollbar {
 width: 1em;
@@ -299,12 +296,7 @@ outline: 1px solid #272720;
     grid-auto-flow: column;
     overflow-x: scroll;
     overflow-y: hidden;
-
-    scroll-snap-type: x mandatory;
-    scroll-padding: 100%;
-    /* background: url(33.jpg) center repeat;
-    background-size: 100% 100%;
-    background-position: top left; */
+    /* scroll-snap-type: x mandatory; */
 }
 .gridLayout2::before{
     content: "";

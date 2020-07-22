@@ -145,7 +145,7 @@
     data2 = {{ data2|safe }};
     razdel = {{ razdel|safe }};
     let summ = 0
-
+    let gridd = document.querySelector('.gridLayout2')
     var currentLocation = 'firstPage';
     // No need to set these inside the event listener since they are always the same.
     let wd = $('.gridLayout2').width() 
@@ -157,70 +157,32 @@
         else{
             $('.section_title2').text("Овощи")
         }
-
-    });
-
-    let gridd = document.querySelector('.gridLayout2')
-    let lastX = 0;
-    $('.gridLayout2').bind('touchstart', function(e) {
-        lastX = e.originalEvent.touches[0].clientX;
-    });
-    let firstSection = 0
-    let secondSection = wd
-    let thirdSection = wd*2
-    let fourthSection = wd*3
-    $('.gridLayout2').bind('touchmove', function (e){
-        var currentX = e.originalEvent.changedTouches[0].clientX;
-        let scrolled = $(".gridLayout2").scrollLeft()
-        let dist = lastX - currentX
-        console.log(scrolled)
-        if(dist > 30){
-            console.log("left")
-            // moved left
-            if (scrolled>firstSection+1){
-                gridd.scrollBy({
-                    left: secondSection,
-                    behavior: 'smooth'
-                })
-            }else if(scrolled > secondSection+1){
-                gridd.scrollBy({
-                    left: thirdSection,
-                    behavior: 'smooth'
-                })
-               
-            }else if(scrolled > thirdSection +1){
-                gridd.scrollBy({
-                    left: fourthSection,
-                    behavior: 'smooth'
-                })
-               
-            }
-            
-        }else if(dist < -30){
-            console.log("right")
-            // moved right
-            if (scrolled<secondSection-1){
-                gridd.scrollBy({
-                    left: firstSection,
-                    behavior: 'smooth'
-                })
-                
-            }else if(scrolled < thirdSection-1){
-                gridd.scrollBy({
-                    left: secondSection,
-                    behavior: 'smooth'
-                })
-               
-            }else if(scrolled < fourthSection -1){
-                gridd.scrollBy({
-                    left: thirdSection,
-                    behavior: 'smooth'
-                })
-            }
+        let vegetablesSection = document.querySelector('.gridLayout2')
+        if(vegetablesSection.scrollLeft >= 50 && vegetablesSection.scrollLeft <= 150) {
+          vegetablesSection.scrollTo(wd+20, 0)
         }
-    });
-
-        
+        else if(vegetablesSection.scrollLeft >= wd+100 && vegetablesSection.scrollLeft <= wd+150) {
+          vegetablesSection.scrollTo(wd*2+20, 0)
+        }
+        else if(vegetablesSection.scrollLeft >= wd*2+100 && vegetablesSection.scrollLeft <= wd*2+150) {
+          vegetablesSection.scrollTo(wd*3+20, 0)
+        }
+        else if(vegetablesSection.scrollLeft >= wd*3+100 && vegetablesSection.scrollLeft <= wd*3+150) {
+          vegetablesSection.scrollTo(wd*4+20, 0)
+        }
+        else if(vegetablesSection.scrollLeft <= wd*4-50 && vegetablesSection.scrollLeft >= wd*4-150) {
+          vegetablesSection.scrollTo(wd*3+20, 0)
+        }
+        else if(vegetablesSection.scrollLeft <= wd*3-50 && vegetablesSection.scrollLeft >= wd*3-150) {
+          vegetablesSection.scrollTo(wd*2+20, 0)
+        }
+        else if(vegetablesSection.scrollLeft <= wd*2-50 && vegetablesSection.scrollLeft >= wd*2-150) {
+          vegetablesSection.scrollTo(wd+20, 0)
+        }
+        else if(vegetablesSection.scrollLeft <= wd-50 && vegetablesSection.scrollLeft >= wd-150) {
+          vegetablesSection.scrollTo(0, 0)
+        }
+    });      
 
     function minus(i, section){
         i = i- 1
