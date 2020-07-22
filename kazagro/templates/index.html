@@ -60,6 +60,8 @@
         <div class="section_title2">Овощи</div>
         <div class="sfs">
             <div class="gridLayout2">
+                <div class="left" onclick="left()"><</div>
+                <div class="right" onclick="right()">></div>
                 {% for i in data1 %}
                     <div class="block sblock_{{forloop.counter}}">
                         <div class="action">
@@ -145,10 +147,24 @@
     data2 = {{ data2|safe }};
     razdel = {{ razdel|safe }};
     let summ = 0
-    let gridd = document.querySelector('.gridLayout2')
-    var currentLocation = 'firstPage';
+
+    let grid = document.querySelector('.gridLayout2')
+    let wd = $(window).width()
+    let leftcount=0,rightcount=0
+    function left(){
+        grid.scrollBy({
+            left: -wd,
+            behavior: "smooth"
+        })
+    }
+    function right(){
+        grid.scrollBy({
+            left: wd+1,
+            behavior: "smooth"
+        })
+    }
     // No need to set these inside the event listener since they are always the same.
-    let wd = $('.gridLayout2').width() 
+    
     $( ".gridLayout2" ).scroll(function() {
         let scrolled = $(".gridLayout2").scrollLeft()
         if (scrolled > wd*3-200){
@@ -157,31 +173,31 @@
         else{
             $('.section_title2').text("Овощи")
         }
-        let vegetablesSection = document.querySelector('.gridLayout2')
-        if(vegetablesSection.scrollLeft >= 50 && vegetablesSection.scrollLeft <= 150) {
-          vegetablesSection.scrollTo(wd+20, 0)
-        }
-        else if(vegetablesSection.scrollLeft >= wd+100 && vegetablesSection.scrollLeft <= wd+150) {
-          vegetablesSection.scrollTo(wd*2+20, 0)
-        }
-        else if(vegetablesSection.scrollLeft >= wd*2+100 && vegetablesSection.scrollLeft <= wd*2+150) {
-          vegetablesSection.scrollTo(wd*3+20, 0)
-        }
-        else if(vegetablesSection.scrollLeft >= wd*3+100 && vegetablesSection.scrollLeft <= wd*3+150) {
-          vegetablesSection.scrollTo(wd*4+20, 0)
-        }
-        else if(vegetablesSection.scrollLeft <= wd*4-50 && vegetablesSection.scrollLeft >= wd*4-150) {
-          vegetablesSection.scrollTo(wd*3+20, 0)
-        }
-        else if(vegetablesSection.scrollLeft <= wd*3-50 && vegetablesSection.scrollLeft >= wd*3-150) {
-          vegetablesSection.scrollTo(wd*2+20, 0)
-        }
-        else if(vegetablesSection.scrollLeft <= wd*2-50 && vegetablesSection.scrollLeft >= wd*2-150) {
-          vegetablesSection.scrollTo(wd+20, 0)
-        }
-        else if(vegetablesSection.scrollLeft <= wd-50 && vegetablesSection.scrollLeft >= wd-150) {
-          vegetablesSection.scrollTo(0, 0)
-        }
+        // let vegetablesSection = document.querySelector('.gridLayout2')
+        // if(vegetablesSection.scrollLeft >= 50 && vegetablesSection.scrollLeft <= 150) {
+        //   vegetablesSection.scrollTo(wd+20, 0)
+        // }
+        // else if(vegetablesSection.scrollLeft >= wd+100 && vegetablesSection.scrollLeft <= wd+150) {
+        //   vegetablesSection.scrollTo(wd*2+20, 0)
+        // }
+        // else if(vegetablesSection.scrollLeft >= wd*2+100 && vegetablesSection.scrollLeft <= wd*2+150) {
+        //   vegetablesSection.scrollTo(wd*3+20, 0)
+        // }
+        // else if(vegetablesSection.scrollLeft >= wd*3+100 && vegetablesSection.scrollLeft <= wd*3+150) {
+        //   vegetablesSection.scrollTo(wd*4+20, 0)
+        // }
+        // else if(vegetablesSection.scrollLeft <= wd*4-50 && vegetablesSection.scrollLeft >= wd*4-150) {
+        //   vegetablesSection.scrollTo(wd*3+20, 0)
+        // }
+        // else if(vegetablesSection.scrollLeft <= wd*3-50 && vegetablesSection.scrollLeft >= wd*3-150) {
+        //   vegetablesSection.scrollTo(wd*2+20, 0)
+        // }
+        // else if(vegetablesSection.scrollLeft <= wd*2-50 && vegetablesSection.scrollLeft >= wd*2-150) {
+        //   vegetablesSection.scrollTo(wd+20, 0)
+        // }
+        // else if(vegetablesSection.scrollLeft <= wd-50 && vegetablesSection.scrollLeft >= wd-150) {
+        //   vegetablesSection.scrollTo(0, 0)
+        // }
     });      
 
     function minus(i, section){

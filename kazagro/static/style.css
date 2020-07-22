@@ -294,9 +294,24 @@ outline: 1px solid #272720;
     grid-template-rows: 1fr 1fr 1fr;
     grid-auto-columns: calc(100vw / 2);
     grid-auto-flow: column;
-    overflow-x: scroll;
+    overflow-x: hidden;
     overflow-y: hidden;
     /* scroll-snap-type: x mandatory; */
+}
+.left, .right{
+    display: none;
+    font-size: 2em;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    z-index: 9999;
+}
+.left{
+    left: 10px;
+}
+.right{
+    right: 10px;
 }
 .gridLayout2::before{
     content: "";
@@ -338,6 +353,9 @@ outline: 1px solid #272720;
 @media (max-width: 570px){
     .gridLayout2{
         display: grid;
+    }
+    .left, .right{
+        display: block;
     }
     .section_title2{
         display: block;
