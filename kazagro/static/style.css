@@ -33,7 +33,7 @@ body{
     /* grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); */
     grid-template-columns: 1fr 1fr 1fr;
     /* grid-template-rows: repeat(auto-fill, minmax(170px, 1fr)); */
-    grid-auto-rows: 200px;
+    grid-auto-rows: 220px;
     position: relative;
 }
 .grid1{
@@ -66,7 +66,7 @@ body{
 }
 .grid3 img{
     width: 100%;
-    height: 150%;
+    height: 100%;
 }
 .block{
     height: 100%;
@@ -267,11 +267,10 @@ body{
     padding: 20px;
 }
 /* .sfs{
-    overflow-x: scroll;
+    overflow-x: hidden;
     overflow-y: hidden;
     width: 100%;
     height: auto;
-    scroll-snap-type: x proximity;
 } */
 .gridLayout2::-webkit-scrollbar {
 width: 1em;
@@ -288,15 +287,24 @@ outline: 1px solid #272720;
 .gridLayout2{
     position: relative;
     display: none;
-    /* width: calc(100vw * 4); */
+    width: auto;
     height: 75vh;
-    /* grid-template-columns: repeat(4, calc(100vw / 2)); */
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-auto-columns: calc(100vw / 2);
-    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
     overflow-x: hidden;
     overflow-y: hidden;
-    /* scroll-snap-type: x mandatory; */
+}
+.grid21{
+    display: grid;
+    grid-template-columns: repeat(3, calc(100vw / 2));
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 100%;
+}
+.grid22{
+    display: grid;
+    grid-template-columns: repeat(3, calc(100vw / 2));
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 100%;
 }
 .left, .right{
     display: none;
@@ -317,13 +325,13 @@ outline: 1px solid #272720;
 .gridLayout2::before{
     content: "";
     position: absolute;
-    background: url("33.jpg") center repeat;
-    background-size: 35% 100%;
+    background: url("alloneline.jpg") center no-repeat;
+    background-size: 100% 100%;
     background-position: top left;
     top: 0;
     z-index: 0;
     left: 0;
-    width: calc(100vw * 4);
+    width: calc(100vw * 4.5);
     height: 100%;
 }
 .section_title2{
@@ -335,7 +343,7 @@ outline: 1px solid #272720;
 }
 @media (min-width: 1000px){
     .gridLayout{
-        grid-auto-rows: 220px;
+        grid-auto-rows: 250px;
     }
 }
 
@@ -362,8 +370,11 @@ outline: 1px solid #272720;
         display: block;
         font-size: 1.5em;
     }
-    .price, .minus{
-        font-size: 0.9em;
+    .minus, .action_top{
+        font-size: 1.3em;
+    }
+    .price{
+        font-size: 1em;
     }
     .plus, .name{
         font-size: 0.8em;

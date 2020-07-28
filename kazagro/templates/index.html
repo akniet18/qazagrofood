@@ -39,7 +39,7 @@
         
         <div class="section_title">Фрукты</div>
         <div class="gridLayout">
-            <div class="grid3"><img src="{% static '33.jpg' %}" alt=""></div>
+            <div class="grid3"><img src="{% static 'fruckts.jpg' %}" alt=""></div>
             {% for i in data2 %}
                 <div class="block block2_{{forloop.counter}}">
                     <div class="action">
@@ -62,7 +62,10 @@
             <div class="gridLayout2">
                 <div class="left" onclick="left()"> &#8249 </div>
                 <div class="right" onclick="right()"> &#8250 </div>
+
+                <div class="grid21">
                 {% for i in data1 %}
+                    {% if forloop.counter <= 9 %}
                     <div class="block sblock_{{forloop.counter}}">
                         <div class="action">
                             <div class="name">{{i.name}}</div>
@@ -73,12 +76,30 @@
                             </div>
                             <div class="price">{{i.price}} ₸ <div class="sprice_{{forloop.counter}} price2"> </div></div>
                         </div>
-        
-                        {% comment %} <img class="img" src="{% static i.img %}"/> {% endcomment %}
-                        {% comment %} <img class="img" src="../static/{{i.img}}"/> {% endcomment %}
-            
                     </div>
+                    {% endif %}
                 {% endfor %}
+                </div>
+                
+                <div class="grid21">
+                    {% for i in data1 %}
+                        {% if forloop.counter > 9 and forloop.counter <= 18 %}
+                        <div class="block sblock_{{forloop.counter}}">
+                            <div class="action">
+                                <div class="name">{{i.name}}</div>
+                                <div class="action_top">
+                                    <div class="minus"  id="action_minus_" onClick="minus({{forloop.counter}}, 4)">-</div>
+                                    <div class="count" id="count_${i}"><span>{{i.count}}</span>кг</div>
+                                    <div class="plus" id="action_plus_" onClick="plus({{forloop.counter}}, 4)">+</div>
+                                </div>
+                                <div class="price">{{i.price}} ₸ <div class="sprice_{{forloop.counter}} price2"> </div></div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                <div class="grid21">
                 {% for i in data2 %}
                     <div class="block ablock2_{{forloop.counter}}">
                         <div class="action">
@@ -94,6 +115,7 @@
                         {% comment %} <img class="img" src="../static/{{i.img}}"/> {% endcomment %}
                     </div>
                 {% endfor %}
+                </div>
             </div>
         </div>
 

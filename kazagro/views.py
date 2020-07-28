@@ -37,45 +37,54 @@ def main(razdel):
     # worksheet = sh.get_worksheet(1)
     # values_name = worksheet.row_values(3)
     # values_prices = worksheet.row_values(2)
-    ovosh_img = ["Картофель урожай 2020 года.jpg", "Лук.jpg", "svekla.jpg", "kapusta.jpg", "Баклажаны.jpg", "kabachki.jpg", "Морковь.jpg", "Огурцы1.jpg", "Светофор.jpg",
-        "Рава.jpg", "potato.jpg", "yellowmorkov.jpg", "rozpotato.jpg", "cherri.jpg", "backlo.jpg",
-        "kapustacv.jpg", "Брокколи.jpg", "kapusta.jpg"
-    ]
-    fruck_img = ["apelsin.jpg", "apple3.jpg", "apple2.jpg", "apple1.jpg", "grusha.jpg", "banan.jpg"]
+    # ovosh_img = ["Картофель урожай 2020 года.jpg", "Лук.jpg", "svekla.jpg", "kapusta.jpg", "Баклажаны.jpg", "kabachki.jpg", "Морковь.jpg", "Огурцы1.jpg", "Светофор.jpg",
+    #     "Рава.jpg", "potato.jpg", "yellowmorkov.jpg", "rozpotato.jpg", "cherri.jpg", "backlo.jpg",
+    #     "kapustacv.jpg", "Брокколи.jpg", "kapusta.jpg"
+    # ]
+    # fruck_img = ["apelsin.jpg", "apple3.jpg", "apple2.jpg", "apple1.jpg", "grusha.jpg", "banan.jpg"]
 
-    ovosh = ['Картофель урожай 2020 года', 'Лук', 'Свекла', 'Капуста', 'Баклажаны', 'Кабачки','Морковь', 'Огурцы "Миринда"', 'Болгарский перец "Светофор"',
-    'Огурцы "Рава"', 'Помидоры', 'Жёлтая морковь', 'Помидоры "Розовые Юсуповские"','Помидоры "Черри" упаковка 500 гр', 'Болгарский перец зеленый',
-    'Капуста цветная', 'Брокколи', 'Пекинская капуста']
-    fruck = ['Апельсины "Балади"', 'Яблоки "Салтанат"', 'Яблоки "Симеренко"', 'Яблоки Ранетки', 'Груша "Форель"', 'Бананы "Кавендиш"']  
+    ovosh = ['Картофель урожай 2020 года', 'Лук', 'Морковь', 
+            'Свекла', 'Капуста', 'Огурцы "Миринда"',
+            'Баклажаны',  'Кабачки', 'Болгарский перец "Светофор"',
+            'Помидоры "Розовые Юсуповские"', 'Помидоры "Черри" упаковка 500 гр', 'Помидоры',
+            'Болгарский перец зеленый', 'Огурцы "Рава"',  'Жёлтая морковь', 
+            'Брокколи', 'Капуста цветная', 'Пекинская капуста']
+    # fruck = ['Апельсины "Балади"', 'Яблоки "Салтанат"', 'Яблоки "Симеренко"', 'Яблоки Ранетки', 'Груша "Форель"', 'Бананы "Кавендиш"']  
+    fruck = ['Лимон "Кутдикен"','Яблоки  "Granny Smith" ', 'Персик "Никтарин"',
+             'Яблоки "Превосход"', 'Абрикос', 'Мандарины "kinnow"',
+             'Бананы "Кавендиш"',  'Дыня Торпедо',  "Арбуз "]
 
     data1 = []
     data2 = []
-    data3 = []
+    # data3 = []
     soup = BeautifulSoup(r.text, 'lxml')
     a = soup.find_all("tr")
-    for i in range(3, len(a)):
-        b = a[i].find_all('td')
-        if razdel == "roznica":
-            for i in range(len(ovosh)):
+
+    for i in range(len(ovosh)):
+        for k in range(3, len(a)):
+            b = a[k].find_all('td')
+            if razdel == "roznica":
                 if ovosh[i] == b[1].get_text() and b[2].get_text() == "Овощи":
-                    data1.append({'name': b[1].get_text(), 'price': b[3].get_text(), 'count': 0, "img": ovosh_img[i]})
-            for i in range(len(fruck)):
-                if fruck[i] == b[1].get_text() and b[2].get_text() == "Фрукты":
-                    data2.append({'name': b[1].get_text(), 'price': b[3].get_text(), 'count': 0, "img": fruck_img[i]})
-        elif razdel == "optom":
-            for i in range(len(ovosh)):
+                    data1.append({'name': b[1].get_text(), 'price': b[3].get_text(), 'count': 0})
+            elif razdel == "optom":
                 if ovosh[i] == b[1].get_text() and b[2].get_text() == "Овощи":
-                    data1.append({'name': b[1].get_text(), 'price': b[5].get_text(), 'count': 0, "img": ovosh_img[i]})
-            for i in range(len(fruck)):
-                if fruck[i] == b[1].get_text() and b[2].get_text() == "Фрукты":
-                    data2.append({'name': b[1].get_text(), 'price': b[5].get_text(), 'count': 0, "img": fruck_img[i]})
-        else:
-            for i in range(len(ovosh)):
+                    data1.append({'name': b[1].get_text(), 'price': b[5].get_text(), 'count': 0})
+            else:
                 if ovosh[i] == b[1].get_text() and b[2].get_text() == "Овощи":
-                    data1.append({'name': b[1].get_text(), 'price': b[10].get_text(), 'count': 0, "img": ovosh_img[i]})
-            for i in range(len(fruck)):
-                if fruck[i] == b[1].get_text() and b[2].get_text() == "Фрукты":
-                    data2.append({'name': b[1].get_text(), 'price': b[10].get_text(), 'count': 0, "img": fruck_img[i]})
+                    data1.append({'name': b[1].get_text(), 'price': b[10].get_text(), 'count': 0})
+    for i in range(len(fruck)):
+        for k in range(3, len(a)):
+            b = a[k].find_all('td')
+            if razdel == "roznica":
+                if fruck[i] == b[1].get_text() and (b[2].get_text() == "Фрукты" or b[2].get_text() == "Экзотика" or b[2].get_text() == "фрукты"):
+                    data2.append({'name': b[1].get_text(), 'price': b[3].get_text(), 'count': 0})
+            elif razdel == "optom":
+                if fruck[i] == b[1].get_text() and (b[2].get_text() == "Фрукты" or b[2].get_text() == "Экзотика" or b[2].get_text() == "фрукты"):
+                    data2.append({'name': b[1].get_text(), 'price': b[5].get_text(), 'count': 0})
+            else:
+                if fruck[i] == b[1].get_text() and (b[2].get_text() == "Фрукты" or b[2].get_text() == "Экзотика" or b[2].get_text() == "фрукты"):
+                    data2.append({'name': b[1].get_text(), 'price': b[10].get_text(), 'count': 0})
+
     # print(len(data1), len(data2))
             
         # if b[2].get_text() != "":
@@ -87,11 +96,11 @@ def main(razdel):
     # for i in range(2, len(values_name)):
     #     if values_name[i] != "":
     #         data.append({'name': values_name[i], 'price': values_prices[i], 'count': 0})
-    data3 = data1 + data2
+    # data3 = data1 + data2
     return {
         'data1': data1,
         'data2': data2,
-        'data3': data3
+        # 'data3': data3
     }
 
 
@@ -102,7 +111,7 @@ def base(request):
 def index(request, razdel):
     # print(razdel, "index")
     a = main(razdel)
-    return render(request, 'index.html', {'data1': a['data1'], 'data2': a['data2'], 'data3': a['data3'], 'razdel': json.dumps(razdel)})
+    return render(request, 'index.html', {'data1': a['data1'], 'data2': a['data2'], 'razdel': json.dumps(razdel)})
 
 
 def addRow(request):
