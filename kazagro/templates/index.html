@@ -20,8 +20,9 @@
             <div class="grid2"><img src="{% static '332.jpg' %}" alt=""></div>
             {% for i in data1 %}
                 <div class="block block_{{forloop.counter}}">
+                    <div class="name">{{i.name}}</div>
                     <div class="action">
-                        <div class="name">{{i.name}}</div>
+                        
                         <div class="action_top">
                             <div class="minus"  id="action_minus_" onClick="minus({{forloop.counter}}, 1)">-</div>
                             <div class="count" id="count_${i}"><span>{{i.count}}</span>кг</div>
@@ -42,8 +43,9 @@
             <div class="grid3"><img src="{% static 'fruckts.jpg' %}" alt=""></div>
             {% for i in data2 %}
                 <div class="block block2_{{forloop.counter}}">
+                    <div class="name">{{i.name}}</div>
                     <div class="action">
-                        <div class="name">{{i.name}}</div>
+                        
                         <div class="action_top">
                             <div class="minus"  id="action_minus_" onClick="minus({{forloop.counter}}, 2)">-</div>
                             <div class="count" id="count_${i}"><span>{{i.count}}</span>кг</div>
@@ -56,19 +58,20 @@
                 </div>
             {% endfor %}
         </div>
-
+        <div class="left" onclick="left()"> &#8249 <span>пред</span> </div>
+        <div class="right" onclick="right()"><span>след</span>  &#8250 </div>
         <div class="section_title2">Овощи</div>
         <div class="sfs">
             <div class="gridLayout2">
-                <div class="left" onclick="left()"> &#8249 </div>
-                <div class="right" onclick="right()"> &#8250 </div>
+                
 
                 <div class="grid21">
                 {% for i in data1 %}
                     {% if forloop.counter <= 9 %}
                     <div class="block sblock_{{forloop.counter}}">
+                        <div class="name">{{i.name}}</div>
                         <div class="action">
-                            <div class="name">{{i.name}}</div>
+                            
                             <div class="action_top">
                                 <div class="minus"  id="action_minus_" onClick="minus({{forloop.counter}}, 4)">-</div>
                                 <div class="count" id="count_${i}"><span>{{i.count}}</span>кг</div>
@@ -85,8 +88,9 @@
                     {% for i in data1 %}
                         {% if forloop.counter > 9 and forloop.counter <= 18 %}
                         <div class="block sblock_{{forloop.counter}}">
+                            <div class="name">{{i.name}}</div>
                             <div class="action">
-                                <div class="name">{{i.name}}</div>
+                                
                                 <div class="action_top">
                                     <div class="minus"  id="action_minus_" onClick="minus({{forloop.counter}}, 4)">-</div>
                                     <div class="count" id="count_${i}"><span>{{i.count}}</span>кг</div>
@@ -102,8 +106,9 @@
                 <div class="grid21">
                 {% for i in data2 %}
                     <div class="block ablock2_{{forloop.counter}}">
+                        <div class="name">{{i.name}}</div>
                         <div class="action">
-                            <div class="name">{{i.name}}</div>
+                            
                             <div class="action_top">
                                 <div class="minus"  id="action_minus_" onClick="minus({{forloop.counter}}, 3)">-</div>
                                 <div class="count" id="count_${i}"><span>{{i.count}}</span>кг</div>
@@ -139,18 +144,18 @@
                 </div>
                 <div class="input_phone">
                     <div><label for="phone">Телефон:</label></div>
-                    <input placeholder="Телефон..." id="phone" type="text"></input>
+                    <input placeholder="Телефон..." id="phone" type="text"  maxlength="11">
                     <div class="error_phone"></div>
                 </div>
 
                 {% comment %} <div class="input_raion">
                     <div><label for="area">Район: </label></div>
-                    <input placeholder="Район" id="area" type="text"></input>
+                    <input placeholder="Район" id="area" type="text">
                 </div> {% endcomment %}
 
                 <div class="input_phone">
-                    <div><label for="address">Напишите полный адрес: улица, дом, название организации:</label></div>
-                    <input placeholder="Адрес..." id="address" type="text"></input>
+                    <div><label for="address">Адрес доставки: улица, дом, название организации:</label></div>
+                    <input placeholder="Адрес доставки..." id="address" type="text">
                     <div class="error_address"></div>
                 </div>
                 <div class="myorder"></div>
