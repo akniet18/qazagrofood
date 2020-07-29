@@ -360,6 +360,54 @@ outline: 1px solid #272720;
     display: none;
     padding: 20px;
 }
+
+.modalOne{
+    width: 60%;
+    height: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+}
+.listCheckItems{
+    font-size: 1.1em;
+}
+.modalOnePrice{
+    margin: 20px 0;
+    border-top: 1px solid #000;
+    width: 100%;
+    padding: 10px 0;
+
+}
+.modalOneBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modalOneBtn button{
+    padding: 10px 20px;
+    width: 100px;
+    border: 1px solid silver;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+}
+.modalOneBtn button:first-child{
+    background-color: green;
+}
+.modalOneBtn button:last-child{
+    background-color: red;
+}
+.isEmptyItems{
+    font-size: 1.5em;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
 @media (min-width: 1000px){
     .gridLayout{
         grid-auto-rows: 250px;

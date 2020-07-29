@@ -19,7 +19,7 @@ sh = gc.open_by_key(SAMPLE_SPREADSHEET_ID)\
 def next_available_row(worksheet):
     a = worksheet.col_values(1)
     b = worksheet.col_values(2)
-    print(len(a), len(b))
+    # print(len(a), len(b))
     # str_list = []
     # for i in a:
     #     str_list.append()
@@ -85,22 +85,9 @@ def main(razdel):
                 if fruck[i] == b[1].get_text() and (b[2].get_text() == "Фрукты" or b[2].get_text() == "Экзотика" or b[2].get_text() == "фрукты"):
                     data2.append({'name': b[1].get_text(), 'price': b[10].get_text(), 'count': 0})
 
-    # print(len(data1), len(data2))
-            
-        # if b[2].get_text() != "":
-        #     name = b[1].get_text()
-        #     price = b[3].get_text()
-        #     data.append({'name': name, 'price': price, 'count': 0})
-            # print(name)
-    # print(len(values_name)-1)
-    # for i in range(2, len(values_name)):
-    #     if values_name[i] != "":
-    #         data.append({'name': values_name[i], 'price': values_prices[i], 'count': 0})
-    # data3 = data1 + data2
     return {
         'data1': data1,
         'data2': data2,
-        # 'data3': data3
     }
 
 
@@ -135,30 +122,31 @@ def addRow(request):
         ind = next_available_row(worksheet) + 1
         dateTimeObj = datetime.now()
         res=[]
-        for i in range(78):
+        for i in range(81):
             res.append("")
         ddd = dateTimeObj.strftime("%d.%M.%Y %H:%M:%S")
-        print(ind, ddd)
+        # print(ind, ddd)
         
         res[0] = ind-4
         res[1] = ddd
-        indx = [11, 12, 13, 17, 14, 15, 20, 21, 22, 29, 30, 27, 23, 24, 25, 26, 18, 19, 32, 33, 37, 39, 43, 42]
+        indx = [11, 12, 13, 14, 15, 23, 25, 26, 19, 21, 22, 20, 18, 24, 17, 27, 29, 30, 45, 31, 44, 36, 47, 40, 43, 58, 51]
+        # indx2 = []
         # for i in data1:
-        #     ii = worksheet.find(i['name'].lower())
-        #     indx.append(ii.col)
+        #     ii = worksheet.find(i['name'])
+        #     indx2.append(ii.col)
         #     # res[ii.col] = i['count']
         # for i in data2:
-        #     ii = worksheet.find(i['name'].lower())
+        #     ii = worksheet.find(i['name'])
         #     # print(i)
-        #     indx.append(ii.col)
+        #     indx2.append(ii.col)
         #     # res[ii.col] = i['count']
-        # print(indx)
-        for i in range(len(indx)-6):
+        # print(len(indx2), indx2)
+        for i in range(len(indx)-9):
             # print(indx[i])
             if data1[i]['count'] != 0:
                 res[indx[i]-1] = data1[i]['count']
 
-        for i in range(6):
+        for i in range(9):
             # print(indx[18+i])
             if data2[i]['count'] != 0:
                 res[indx[18+i]-1] = data2[i]['count']
@@ -172,7 +160,7 @@ def addRow(request):
         res.append(address)
         res.append(phone)
         # print(summ)
-        print(len(res))
+        # print(res)
         
         ranges = "A{}:CL{}".format(ind, ind)
         worksheet.update(ranges, [res])

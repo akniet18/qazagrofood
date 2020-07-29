@@ -1,4 +1,5 @@
 {% load static %}
+{% load mathfilters %}
 
 <html>
 
@@ -63,8 +64,6 @@
         <div class="section_title2">Овощи</div>
         <div class="sfs">
             <div class="gridLayout2">
-                
-
                 <div class="grid21">
                 {% for i in data1 %}
                     {% if forloop.counter <= 9 %}
@@ -127,15 +126,29 @@
         <div class="summ_div">Всего: <div class="summ">0</div> ₸</div>
 
         <div class="doOrder">
-            <div onClick="doorder()">
+            <div onClick="doorderChech()">
                 Далее
             </div>
         </div>
 
-        <div class="modal">
+        <div class="modal modal1">
+            <div class="modalOne">
+                <div class="listCheckItems_sec">
+                    <div class="listCheckItems">                        
+                    </div>
+                    <div class="modalOnePrice"></div>
+                </div>
+                <div class="modalOneBtn">
+                    <button onclick="nextModal()" class="checkBtn">Верно</button>
+                    <button onclick="doorderChech()">Не верно</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal modal2">
             <form>
                 {% csrf_token %}
-                <div class="close" onClick="doorder()">&times;</div>
+                <div class="close" onClick="document.querySelector('.modal2').classList.toggle('show')">&times;</div>
                 {% comment %} <div class="modal_title">title</div> {% endcomment %}
                 <div class="input_name">
                     <div><label for="name">Как к вам обращаться? (впишите свое Имя):</label></div>
@@ -200,31 +213,6 @@
         else{
             $('.section_title2').text("Овощи")
         }
-        // let vegetablesSection = document.querySelector('.gridLayout2')
-        // if(vegetablesSection.scrollLeft >= 50 && vegetablesSection.scrollLeft <= 150) {
-        //   vegetablesSection.scrollTo(wd+20, 0)
-        // }
-        // else if(vegetablesSection.scrollLeft >= wd+100 && vegetablesSection.scrollLeft <= wd+150) {
-        //   vegetablesSection.scrollTo(wd*2+20, 0)
-        // }
-        // else if(vegetablesSection.scrollLeft >= wd*2+100 && vegetablesSection.scrollLeft <= wd*2+150) {
-        //   vegetablesSection.scrollTo(wd*3+20, 0)
-        // }
-        // else if(vegetablesSection.scrollLeft >= wd*3+100 && vegetablesSection.scrollLeft <= wd*3+150) {
-        //   vegetablesSection.scrollTo(wd*4+20, 0)
-        // }
-        // else if(vegetablesSection.scrollLeft <= wd*4-50 && vegetablesSection.scrollLeft >= wd*4-150) {
-        //   vegetablesSection.scrollTo(wd*3+20, 0)
-        // }
-        // else if(vegetablesSection.scrollLeft <= wd*3-50 && vegetablesSection.scrollLeft >= wd*3-150) {
-        //   vegetablesSection.scrollTo(wd*2+20, 0)
-        // }
-        // else if(vegetablesSection.scrollLeft <= wd*2-50 && vegetablesSection.scrollLeft >= wd*2-150) {
-        //   vegetablesSection.scrollTo(wd+20, 0)
-        // }
-        // else if(vegetablesSection.scrollLeft <= wd-50 && vegetablesSection.scrollLeft >= wd-150) {
-        //   vegetablesSection.scrollTo(0, 0)
-        // }
     });      
 
     function minus(i, section){
@@ -382,11 +370,47 @@
         }
     }
 
-    function doorder(){
-        let modal = document.querySelector('.modal')
-        let txt = ""
-        let sumall = 0
-        
+    function doorderChech(){
+        let items = document.querySelector('.listCheckItems')
+        let checkBtn = document.querySelector('.checkBtn')
+        let modalOnePrice = document.querySelector('.modalOnePrice')
+        let htmls = ""
+        let summ = 0
+        for (let i in data1){
+            if (data1[i].count > 0){
+                let price = parseInt(data1[i].price.replace(/\s/g, ''))
+                htmls += `<div>
+                            ${data1[i].name} x ${data1[i].count} = ${data1[i].count * price} ₸
+                        </div>`
+                summ += data1[i].count * price
+            }
+        }
+        for (let i in data2){
+            if (data2[i].count > 0){
+                let price = parseInt(data2[i].price.replace(/\s/g, ''))
+                htmls += `<div>
+                            ${data2[i].name} x ${data2[i].count} = ${data2[i].count * price}  ₸
+                        </div>`
+                summ += data2[i].count * price
+            }
+        }
+        if (htmls.length < 1){
+            items.innerHTML = '<div class="isEmptyItems">Вы еще не выбрали</div>'
+            checkBtn.style.cursor = "no-drop"
+            checkBtn.disabled = true
+        }else{
+            items.innerHTML = htmls
+            modalOnePrice.innerText =  `Итого: ${summ} ₸`
+            checkBtn.style.cursor = "pointer"
+            checkBtn.disabled = false
+        }
+        let modal = document.querySelector('.modal1')       
+        modal.classList.toggle('show')
+
+    }
+    function nextModal(){
+        doorderChech()
+        let modal = document.querySelector('.modal2')       
         modal.classList.toggle('show')
     }
 
