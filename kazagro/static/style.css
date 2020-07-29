@@ -16,6 +16,8 @@ body{
     /* background-size: 100% 100%; */
 }
 .wrapper{
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
     height: fit-content;
     background: #272720;
     overflow: hidden;
@@ -77,9 +79,7 @@ body{
 }
 .block{
     height: 100%;
-    position: relative;
-    scroll-snap-align: center;
-    
+    position: relative;   
 }
 .action{
     position: absolute;
@@ -94,13 +94,18 @@ body{
 }
 .block:hover > .action {
     display: flex!important;
+    display: -ms-flexbox!important;
+    display: -webkit-flex!important;
 }
 .action:active{
     display: flex;
-
+    display: -ms-flexbox!important;
+    display: -webkit-flex!important;
 }
 .show{
-    display: flex!important
+    display: flex!important;
+    display: -ms-flexbox!important;
+    display: -webkit-flex!important;
 }
 .minus, .plus{
     width: 100%;
@@ -109,7 +114,10 @@ body{
     justify-content: center;
     align-items: center;
     transition: 0.5s;
-    user-select: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }
 .minus:active, .plus:active{
     font-size: 2.5em!important;
@@ -273,7 +281,7 @@ body{
     margin: 0 auto;
     display: flex;
     justify-content: center;
-    align-items: start;
+    align-items: flex-start;
     position: relative;
 }
 .base_div a{
