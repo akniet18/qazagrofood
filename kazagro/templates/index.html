@@ -381,7 +381,7 @@
                 let price = parseInt(data1[i].price.replace(/\s/g, ''))
                 htmls += `<div class="listCheckItem">
                             ${data1[i].name} x <span class="minusModal" onclick="minusModal(1, ${i})">-</span> <span class="listitemcount">${data1[i].count}</span>
-                            <span class="plusModal" onclick="plusModal(1, ${i})">+</span> = <span class="listitemsumm"> ${data1[i].count * price}<span> ₸
+                            <span class="plusModal" onclick="plusModal(1, ${i})">+</span> = <span class="listitemsumm"> ${data1[i].count * price}</span> ₸
                         </div>`
                 summ += data1[i].count * price
             }
