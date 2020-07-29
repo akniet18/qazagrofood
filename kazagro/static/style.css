@@ -79,7 +79,8 @@ body{
 }
 .block{
     height: 100%;
-    position: relative;   
+    position: relative;
+    cursor: pointer;
 }
 .action{
     position: absolute;

@@ -203,8 +203,14 @@
             behavior: "smooth"
         })
     }
-    // No need to set these inside the event listener since they are always the same.
-    
+    // // No need to set these inside the event listener since they are always the same.
+    // $(".block").hover(function(){
+    //     //On Hover - Works on ios
+    //     $(".action").hide();
+    // }, function(){
+    //     //Hover Off - Hover off doesn't seem to work on iOS
+    //     $(".action").show();
+    // })
     $( ".gridLayout2" ).scroll(function() {
         let scrolled = $(".gridLayout2").scrollLeft()
         if (scrolled > wd*3-200){
