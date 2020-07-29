@@ -130,6 +130,7 @@ body{
     color: #fff;
     z-index: 99;
     font-weight: bold;
+    background: rgba(0, 0, 0, 0.5);
     /* border-bottom: 1px #fff solid; */
 }
 .price{
