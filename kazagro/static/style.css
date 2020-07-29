@@ -97,6 +97,7 @@ body{
     display: flex!important;
     display: -ms-flexbox!important;
     display: -webkit-flex!important;
+    -webkit-transition: opacity 0.3s linear; opacity: 1;
 }
 .action:active{
     display: flex;
@@ -388,6 +389,12 @@ outline: 1px solid #272720;
 }
 .listCheckItems{
     font-size: 1.1em;
+    overflow-y: scroll;
+    height: auto;
+    max-height: 60vh;
+}
+.listCheckItems_sec{
+    height: 100%;
 }
 .listCheckItem{
     border-bottom: 1px solid #000;
