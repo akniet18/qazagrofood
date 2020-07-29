@@ -400,8 +400,10 @@
             items.innerHTML = '<div class="isEmptyItems">Вы еще не выбрали</div>'
             checkBtn.style.cursor = "no-drop"
             checkBtn.disabled = true
+            modalOnePrice.parentNode.style.display = "none"
         }else{
             items.innerHTML = htmls
+            modalOnePrice.parentNode.style.display = "block"
             modalOnePrice.innerText =  summ
             checkBtn.style.cursor = "pointer"
             checkBtn.disabled = false
