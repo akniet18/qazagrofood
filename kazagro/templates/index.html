@@ -136,7 +136,7 @@
                 <div class="listCheckItems_sec">
                     <div class="listCheckItems">                        
                     </div>
-                    <div class="modalOnePrice"></div>
+                    <div class="modalOnePrices">Итого: <span class="modalOnePrice"></span> ₸</div>
                 </div>
                 <div class="modalOneBtn">
                     <button onclick="nextModal()" class="checkBtn">Верно</button>
@@ -379,8 +379,9 @@
         for (let i in data1){
             if (data1[i].count > 0){
                 let price = parseInt(data1[i].price.replace(/\s/g, ''))
-                htmls += `<div>
-                            ${data1[i].name} x ${data1[i].count} = ${data1[i].count * price} ₸
+                htmls += `<div class="listCheckItem">
+                            ${data1[i].name} x <span class="minusModal" onclick="minusModal(1, ${i})">-</span> <span class="listitemcount">${data1[i].count}</span>
+                            <span class="plusModal" onclick="plusModal(1, ${i})">+</span> = <span class="listitemsumm"> ${data1[i].count * price}<span> ₸
                         </div>`
                 summ += data1[i].count * price
             }
@@ -388,8 +389,9 @@
         for (let i in data2){
             if (data2[i].count > 0){
                 let price = parseInt(data2[i].price.replace(/\s/g, ''))
-                htmls += `<div>
-                            ${data2[i].name} x ${data2[i].count} = ${data2[i].count * price}  ₸
+                htmls += `<div class="listCheckItem">
+                            ${data2[i].name} x <span class="minusModal" onclick="minusModal(2, ${i})">-</span> <span class="listitemcount">${data2[i].count}</span>
+                            <span class="plusModal" onclick="plusModal(2, ${i})">+</span> = <span class="listitemsumm"> ${data2[i].count * price}</span>  ₸
                         </div>`
                 summ += data2[i].count * price
             }
@@ -400,14 +402,57 @@
             checkBtn.disabled = true
         }else{
             items.innerHTML = htmls
-            modalOnePrice.innerText =  `Итого: ${summ} ₸`
+            modalOnePrice.innerText =  summ
             checkBtn.style.cursor = "pointer"
             checkBtn.disabled = false
         }
         let modal = document.querySelector('.modal1')       
         modal.classList.toggle('show')
-
     }
+    function minusModal(data, ind){
+        let listitemcount = event.srcElement.parentNode.children[1]
+        let listitemsumm = event.srcElement.parentNode.children[3]
+        let modalOnePrice = document.querySelector('.modalOnePrice')
+        if (data == 1){
+            let price = parseInt(data1[ind].price.replace(/\s/g, ''))
+            if (data1[ind].count != 0){
+                data1[ind].count -= 1
+                listitemcount.innerText = data1[ind].count
+                modalOnePrice.innerText = parseInt(modalOnePrice.innerText) - price
+                listitemsumm.innerText = data1[ind].count * price
+            }
+        }
+        else{
+            let price = parseInt(data2[ind].price.replace(/\s/g, ''))
+            if (data2[ind].count != 0){
+                data2[ind].count -= 1
+                listitemcount.innerText = data2[ind].count
+                modalOnePrice.innerText =parseInt(modalOnePrice.innerText) - price
+                listitemsumm.innerText = data2[ind].count * price
+            }
+        }
+        
+    }
+    function plusModal(data, ind){
+        let listitemcount = event.srcElement.parentNode.children[1]
+        let listitemsumm = event.srcElement.parentNode.children[3]
+        let modalOnePrice = document.querySelector('.modalOnePrice')
+        if (data == 1){
+            let price = parseInt(data1[ind].price.replace(/\s/g, ''))
+            data1[ind].count += 1
+            listitemcount.innerText = data1[ind].count
+            modalOnePrice.innerText = parseInt(modalOnePrice.innerText) + price
+            listitemsumm.innerText = data1[ind].count * price
+        }
+        else{
+            let price = parseInt(data2[ind].price.replace(/\s/g, ''))
+            data2[ind].count += 1
+            listitemcount.innerText = data2[ind].count
+            modalOnePrice.innerText = parseInt(modalOnePrice.innerText) + price
+            listitemsumm.innerText = data2[ind].count * price
+        }
+    }
+
     function nextModal(){
         doorderChech()
         let modal = document.querySelector('.modal2')       

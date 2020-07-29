@@ -1,10 +1,17 @@
+@font-face {
+    font-family: 'Museo700';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url("Museo700-Italic.otf") ;
+}
 body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     height: 100%;
     width: 100%;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Museo700";
     /* background: url("eda248be5c8a09777803ab6f76bf96a92.jpg") center no-repeat; */
     /* background-size: 100% 100%; */
 }
@@ -125,7 +132,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.9em;
+    font-size: 1.1em;
     height: 35px;
     color: #fff;
     z-index: 99;
@@ -334,7 +341,7 @@ outline: 1px solid #272720;
     font-size: 16px;
     
     margin: 0 5px;
-    margin-top: 27px;
+    margin-top: 20px;
 }
 .left{
     left: 10px;
@@ -373,7 +380,36 @@ outline: 1px solid #272720;
 .listCheckItems{
     font-size: 1.1em;
 }
-.modalOnePrice{
+.listCheckItem{
+    border-bottom: 1px solid #000;
+    padding: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+.listCheckItem:last-child{
+    border-bottom: none;
+}
+.listitemsumm{
+    margin-left: 5px;
+}
+.minusModal, .plusModal{
+    cursor: pointer;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid silver;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.5);
+}
+.minusModal{
+    margin: 0 5px 0 10px;
+    padding-bottom: 2px;
+}
+.plusModal{
+    margin: 0 10px 0 5px;
+}
+.modalOnePrices{
     margin: 20px 0;
     border-top: 1px solid #000;
     width: 100%;
@@ -442,10 +478,10 @@ outline: 1px solid #272720;
         font-size: 1.3em;
     }
     .price{
-        font-size: 1em;
+        font-size: 1.1em;
     }
     .plus, .name{
-        font-size: 0.8em;
+        font-size: 1em;
     }
     .gridLayout, .section_title{
         display: none;
