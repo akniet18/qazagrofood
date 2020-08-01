@@ -29,20 +29,23 @@
 
         <div class="line1"><img src="{% static 'Arrow1.png' %}" alt=""></div>
         <div class="line2"><img src="{% static 'Arrow2.png' %}" alt=""></div>
-        <div class="line3"><img src="{% static 'Arrow3.png' %}" alt=""></div>
+        
         <section class="alert2">
             <div class="alert_img"><img src="{% static 'ava.png' %}" alt=""></div>
             <div class="alerts_text">
                 <div>Чтобы увидеть информацию о товаре нажмите на нее! Далее увеличивать или убавлять количество продукции можно через кнопки -,+ </div>
-                
             </div>
             <div class="alert_btns">
                 <div class="btn_next" onclick="nextAlert3()">Далее</div>
-                <div class="btn_noshow" onclick="document.querySelector('.alert2').style.display='none'">Пропустить</div>
+                <div class="btn_noshow" onclick="
+                document.querySelector('.alert2').classList.remove('show');
+                document.querySelector('.line1').style.opacity='0';
+                document.querySelector('.line2').style.opacity='0'">Пропустить</div>
             </div>
         </section>
 
         <section class="alert3">
+            <div class="line3"><img src="{% static 'Arrow3.png' %}" alt=""></div>
             <div class="alert_img"><img src="{% static 'ava.png' %}" alt=""></div>
             <div class="alerts_text">
                 <div>Теперь, когда вы выбрали нужное количество продукции, можете пролистать до конца списка и нажать на кнопку “Далее” и в появившемся списке проверить количество еще раз!</div>
@@ -222,7 +225,6 @@
 {% block javascript %}
 {% endblock javascript %}
 
-{% comment %} <script src="{% static 'script.js' %}"></script> {% endcomment %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
     data1 = {{ data1|safe }};

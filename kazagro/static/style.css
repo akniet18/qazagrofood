@@ -537,9 +537,9 @@ outline: 1px solid #272720;
     width: 100%;
 }
 .line3{
-    position: fixed;
+    position: absolute;
     top: 55%;
-    left: 20%;
+    left: -30%;
     z-index: 999;
     opacity: 0;
     width: 160px;
@@ -619,11 +619,6 @@ outline: 1px solid #272720;
     .alerts, .alert3{
         width: 230px;
     }
-    .line3{
-        top: 55%;
-        left: -10%;
-        width: 130px;
-    }
     .alert2{
         top: 250px;
         left: 75%;
@@ -645,6 +640,14 @@ outline: 1px solid #272720;
         left: 40%;
         top: 50%;
     }
+    .line3{
+        width: 130px;
+        transform: rotate(-30deg);
+        -webkit-transform: rotate(-30deg);
+        -moz-transform: rotate(-30deg);
+        -ms-transform: rotate(-30deg);
+        -o-transform: rotate(-30deg);
+}
     .alert_img{
         width: 60%;
     }
