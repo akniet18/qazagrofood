@@ -7,8 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Qazagrofood</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
-    <link rel="stylesheet" href="{% static 'jquery.fsscroll.css' %}">
-    <!-- <script src="{% static 'sonpScroll.js' %}"></script> -->
 </head>
 
 <body ontouchstart>
@@ -16,6 +14,51 @@
         {% block content %}
         {% endblock content %}
         <div class="section_title">Овощи</div>
+
+        <section class="alerts">
+            <div class="alert_img"><img src="{% static 'ava.png' %}" alt=""></div>
+            <div class="alerts_text">
+                <h3>Здравствуй, дорогой покупатель!</h3>
+                <div>Меня зовут Санжар! Я основатель компании “Qazagrofood”. Сейчас, я помогу тебе оформить заказ!</div>
+            </div>
+            <div class="alert_btns">
+                <div class="btn_next" onclick="showNext()">Далее</div>
+                <div class="btn_noshow" onclick="document.querySelector('.alerts').style.display='none'; localStorage.setItem('alert', false)">Пропустить</div>
+            </div>
+        </section>
+
+        <div class="line1"><img src="{% static 'Arrow1.png' %}" alt=""></div>
+        <div class="line2"><img src="{% static 'Arrow2.png' %}" alt=""></div>
+        <div class="line3"><img src="{% static 'Arrow3.png' %}" alt=""></div>
+        <section class="alert2">
+            <div class="alert_img"><img src="{% static 'ava.png' %}" alt=""></div>
+            <div class="alerts_text">
+                <div>Чтобы увидеть информацию о товаре нажмите на нее! Далее увеличивать или убавлять количество продукции можно через кнопки -,+ </div>
+                
+            </div>
+            <div class="alert_btns">
+                <div class="btn_next" onclick="nextAlert3()">Далее</div>
+                <div class="btn_noshow" onclick="document.querySelector('.alert2').style.display='none'">Пропустить</div>
+            </div>
+        </section>
+
+        <section class="alert3">
+            <div class="alert_img"><img src="{% static 'ava.png' %}" alt=""></div>
+            <div class="alerts_text">
+                <div>Теперь, когда вы выбрали нужное количество продукции, можете пролистать до конца списка и нажать на кнопку “Далее” и в появившемся списке проверить количество еще раз!</div>
+            </div>
+            <div class="alert_btns">
+                <div class="btn_next" onclick="document.querySelector('.alert3').style.display='none'; 
+                document.querySelector('.line3').style.opacity = '0';enableScroll()">Далее</div>
+                <div class="btn_noshow" onclick="
+                    document.querySelector('.alert3').style.display='none'
+                    document.querySelector('.line3').style.opacity = '0'
+                    enableScroll()
+                    ">Пропустить</div>
+            </div>
+        </section>
+        
+
         <div class="gridLayout">
             <div class="grid1"><img src="{% static '33.jpg' %}" alt=""></div>
             <div class="grid2"><img src="{% static '332.jpg' %}" alt=""></div>
@@ -126,7 +169,7 @@
         <div class="summ_div">Всего: <div class="summ">0</div> ₸</div>
 
         <div class="doOrder">
-            <div onClick="doorderChech()">
+            <div onClick="doorderChech()" id="doOrderBtn">
                 Далее
             </div>
         </div>
@@ -181,12 +224,86 @@
 
 {% comment %} <script src="{% static 'script.js' %}"></script> {% endcomment %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="{% static 'jquery.fsscroll.js' %}"></script>
 <script type="text/javascript">
     data1 = {{ data1|safe }};
     data2 = {{ data2|safe }};
     razdel = {{ razdel|safe }};
     let summ = 0
+    
+
+    let alert1 = document.querySelector('.alerts')
+    if (localStorage.getItem('alert')){
+        alert1.style.display = "none"   
+    }
+    let alert2 = document.querySelector('.alert2')
+    let line1 = document.querySelector('.line1')
+    let line2 = document.querySelector('.line2')
+    let block4 = document.querySelector(".block_4").children[1]
+    let block22 = document.querySelectorAll(".grid21")[0]
+    let sblock4 = block22.children[3].children[1]
+    let doOrderBtn = document.querySelector('#doOrderBtn')
+    function alerts_size(){
+        if (window.innerWidth < 580){
+            console.log(sblock4)
+            sblock4.style.display = "flex"
+            let blminus = sblock4.children[0].children[0].getBoundingClientRect()
+            let blplus = sblock4.children[0].children[2].getBoundingClientRect()
+            // line1.style.top = `${blminus.top-10}px`
+            line1.style.width = `${Math.abs(blminus.left-alert2.getBoundingClientRect().left)}px`
+            // line2.style.top = `${blplus.top+70}px`
+            line2.style.width = `${Math.abs(blplus.left-alert2.getBoundingClientRect().left)}px`
+        }else{
+            block4.style.display = "flex"
+            let blminus = block4.children[0].children[0].getBoundingClientRect()
+            let blplus = block4.children[0].children[2].getBoundingClientRect()
+            line1.style.top = `${blminus.top-20}px`
+            line1.style.width = `${Math.abs(blminus.left-alert2.getBoundingClientRect().left)}px`
+            console.log(alert2.getBoundingClientRect().left)
+            line2.style.top = `${blplus.top+80}px`
+            line2.style.width = `${Math.abs(blplus.left-alert2.getBoundingClientRect().left)}px`
+        }
+    }
+    window.addEventListener('resize', function(e){
+        alerts_size()
+    })
+    function disableScroll() { 
+        // Get the current page scroll position 
+        scrollTop =  
+            window.pageYOffset || document.documentElement.scrollTop; 
+        scrollLeft =  
+            window.pageXOffset || document.documentElement.scrollLeft, 
+
+            // if any scroll is attempted, 
+            // set this to the previous value 
+            window.onscroll = function() { 
+                window.scrollTo(scrollLeft, scrollTop); 
+            }; 
+    } 
+
+    function enableScroll() { 
+        window.onscroll = function() {}; 
+    }
+
+
+    function showNext(){        
+        alert1.style.display = 'none'
+        alert2.classList.add('show')
+        line1.style.opacity = "1"
+        line2.style.opacity = "1"
+        localStorage.setItem('alert', false)
+        alerts_size()
+    }
+    function nextAlert3(){
+        alert2.classList.remove("show")
+        block4.style.display = "none"
+        sblock4.style.display = "none"
+        document.querySelector('.alert3').style.display = "flex"
+        line1.style.opacity = "0"
+        line2.style.opacity = "0"
+        document.querySelector('.line3').style.opacity = "1"
+        doOrderBtn.scrollIntoView()
+        disableScroll()
+    }
 
     let grid = document.querySelector('.gridLayout2')
     let wd = $(window).width()
@@ -203,14 +320,7 @@
             behavior: "smooth"
         })
     }
-    // // No need to set these inside the event listener since they are always the same.
-    // $(".block").hover(function(){
-    //     //On Hover - Works on ios
-    //     $(".action").hide();
-    // }, function(){
-    //     //Hover Off - Hover off doesn't seem to work on iOS
-    //     $(".action").show();
-    // })
+
     $( ".gridLayout2" ).scroll(function() {
         let scrolled = $(".gridLayout2").scrollLeft()
         if (scrolled > wd*3-200){
