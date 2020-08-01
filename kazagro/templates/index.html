@@ -36,7 +36,7 @@
                 <div>Чтобы увидеть информацию о товаре нажмите на нее! Далее увеличивать или убавлять количество продукции можно через кнопки -,+ </div>
             </div>
             <div class="alert_btns">
-                <div class="btn_next" onclick="nextAlert3()">Далее</div>
+                <div class="btn_next" onclick="nextAlert3()"> Далее</div>
                 <div class="btn_noshow" onclick="
                 document.querySelector('.alert2').classList.remove('show');
                 document.querySelector('.line1').style.opacity='0';
@@ -234,9 +234,9 @@
     
 
     let alert1 = document.querySelector('.alerts')
-    if (localStorage.getItem('alert')){
-        alert1.style.display = "none"   
-    }
+    // if (localStorage.getItem('alert')){
+    //     alert1.style.display = "none"   
+    // }
     let alert2 = document.querySelector('.alert2')
     let line1 = document.querySelector('.line1')
     let line2 = document.querySelector('.line2')
@@ -303,8 +303,9 @@
         line1.style.opacity = "0"
         line2.style.opacity = "0"
         document.querySelector('.line3').style.opacity = "1"
-        doOrderBtn.scrollIntoView()
-        disableScroll()
+        doOrderBtn.scrollIntoView({behavior:'smooth'})
+        // window.scroll({ top: 500, behavior: 'smooth' })
+        setTimeout(disableScroll, 1000)
     }
 
     let grid = document.querySelector('.gridLayout2')

@@ -12,6 +12,7 @@ body{
     height: 100%;
     width: 100%;
     font-family: "Museo700";
+    scroll-behavior: smooth;
     /* background: url("eda248be5c8a09777803ab6f76bf96a92.jpg") center no-repeat; */
     /* background-size: 100% 100%; */
 }
@@ -503,6 +504,13 @@ outline: 1px solid #272720;
 }
 .alert_img img{
     width: 100%;
+}
+.alert_btns a{
+    text-decoration: none;
+    color: #fff;
+}
+#doOrderBtn{
+    scroll-behavior: smooth;
 }
 .alert_btns div{
     outline: none;
