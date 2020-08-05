@@ -39,8 +39,8 @@
                 <div class="btn_next" onclick="nextAlert3()"> Далее</div>
                 <div class="btn_noshow" onclick="
                 document.querySelector('.alert2').classList.remove('show');
-                document.querySelector('.line1').style.opacity='0';
-                document.querySelector('.line2').style.opacity='0'">Пропустить</div>
+                document.querySelector('.line1').style.display='none';
+                document.querySelector('.line2').style.display='none'">Пропустить</div>
             </div>
         </section>
 
@@ -52,10 +52,10 @@
             </div>
             <div class="alert_btns">
                 <div class="btn_next" onclick="document.querySelector('.alert3').style.display='none'; 
-                document.querySelector('.line3').style.opacity = '0';enableScroll()">Далее</div>
+                document.querySelector('.line3').style.display = 'none';enableScroll()">Далее</div>
                 <div class="btn_noshow" onclick="
                     document.querySelector('.alert3').style.display='none'
-                    document.querySelector('.line3').style.opacity = '0'
+                    document.querySelector('.line3').style.display = 'none'
                     enableScroll()
                     ">Пропустить</div>
             </div>
@@ -234,9 +234,9 @@
     
 
     let alert1 = document.querySelector('.alerts')
-    // if (localStorage.getItem('alert')){
-    //     alert1.style.display = "none"   
-    // }
+    if (localStorage.getItem('alert')){
+        alert1.style.display = "none"   
+    }
     let alert2 = document.querySelector('.alert2')
     let line1 = document.querySelector('.line1')
     let line2 = document.querySelector('.line2')
@@ -290,8 +290,8 @@
     function showNext(){        
         alert1.style.display = 'none'
         alert2.classList.add('show')
-        line1.style.opacity = "1"
-        line2.style.opacity = "1"
+        line1.style.display = "block"
+        line2.style.opacity = "block"
         localStorage.setItem('alert', false)
         alerts_size()
     }
@@ -300,11 +300,10 @@
         block4.style.display = "none"
         sblock4.style.display = "none"
         document.querySelector('.alert3').style.display = "flex"
-        line1.style.opacity = "0"
-        line2.style.opacity = "0"
-        document.querySelector('.line3').style.opacity = "1"
+        line1.style.display = "none"
+        line2.style.opacity = "none"
+        document.querySelector('.line3').style.display = "block"
         doOrderBtn.scrollIntoView({behavior:'smooth'})
-        // window.scroll({ top: 500, behavior: 'smooth' })
         setTimeout(disableScroll, 1000)
     }
 

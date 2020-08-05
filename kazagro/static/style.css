@@ -13,6 +13,8 @@ body{
     width: 100%;
     font-family: "Museo700";
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    overflow-y: auto;
     /* background: url("eda248be5c8a09777803ab6f76bf96a92.jpg") center no-repeat; */
     /* background-size: 100% 100%; */
 }
@@ -533,7 +535,7 @@ outline: 1px solid #272720;
     top: 400px;
     z-index: 999;
     width: 40%;
-    opacity: 0;
+    display: none;
 }
 .line1{
     left: 7%;
@@ -549,7 +551,8 @@ outline: 1px solid #272720;
     top: 55%;
     left: -30%;
     z-index: 999;
-    opacity: 0;
+    /* opacity: 0; */
+    display: none;
     width: 160px;
     transform: rotate(-35deg);
 }
