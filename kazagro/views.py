@@ -14,7 +14,7 @@ SAMPLE_SPREADSHEET_ID = '10W1gWd0Ftzb6iXuW1o9b1U4kLo_bpB9Em6V6oiSOweo'
 # SAMPLE_RANGE_NAME = 'Sheet1!A1:Ac'
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 gc = gspread.service_account(filename=os.path.join(BASE_DIR, 'kazagrofood-dfd69b4ebbfd.json'))
-sh = gc.open_by_key(SAMPLE_SPREADSHEET_ID)\
+sh = gc.open_by_key(SAMPLE_SPREADSHEET_ID)
 
 def next_available_row(worksheet):
     a = worksheet.col_values(1)
