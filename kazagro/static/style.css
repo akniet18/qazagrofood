@@ -15,8 +15,6 @@ body{
     scroll-behavior: smooth;
     overflow-x: hidden;
     overflow-y: auto;
-    /* background: url("eda248be5c8a09777803ab6f76bf96a92.jpg") center no-repeat; */
-    /* background-size: 100% 100%; */
 }
 .wrapper{
     height: -webkit-fit-content;
@@ -464,6 +462,7 @@ outline: 1px solid #272720;
     margin-bottom: 20px;
 }
 
+
 .alerts, .alert3{
     position: fixed;
     top: 50%;
@@ -496,6 +495,12 @@ outline: 1px solid #272720;
     display: none;
     top: 420px;
     left: 45%;
+}
+.alerts{
+    display: none;
+}
+.flex{
+    display: flex!important;
 }
 .alert3{
     display: none;

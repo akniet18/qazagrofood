@@ -23,7 +23,7 @@
             </div>
             <div class="alert_btns">
                 <div class="btn_next" onclick="showNext()">Далее</div>
-                <div class="btn_noshow" onclick="document.querySelector('.alerts').style.display='none'; localStorage.setItem('alert', false)">Пропустить</div>
+                <div class="btn_noshow" onclick="document.querySelector('.alerts').classList.remove('flex'); localStorage.setItem('alert', true)">Пропустить</div>
             </div>
         </section>
 
@@ -222,8 +222,6 @@
             </form>
         </div>
     </div>
-{% block javascript %}
-{% endblock javascript %}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -234,8 +232,12 @@
     
 
     let alert1 = document.querySelector('.alerts')
-    if (localStorage.getItem('alert')){
-        alert1.style.display = "none"   
+    // localStorage.setItem('alert', false)
+    let ls = localStorage.getItem('alert')
+    // console.log(typeof(ls))
+    if (ls == "false"){
+        console.log("afaf")
+        alert1.classList.add('flex')
     }
     let alert2 = document.querySelector('.alert2')
     let line1 = document.querySelector('.line1')
@@ -288,11 +290,11 @@
 
 
     function showNext(){        
-        alert1.style.display = 'none'
+        alert1.classList.remove('flex')
         alert2.classList.add('show')
         line1.style.display = "block"
-        line2.style.opacity = "block"
-        localStorage.setItem('alert', false)
+        line2.style.display = "block"
+        localStorage.setItem('alert', true)
         alerts_size()
     }
     function nextAlert3(){
@@ -305,6 +307,7 @@
         document.querySelector('.line3').style.display = "block"
         doOrderBtn.scrollIntoView({behavior:'smooth'})
         setTimeout(disableScroll, 1000)
+        // setTimeout(enableScroll, 1200)
     }
 
     let grid = document.querySelector('.gridLayout2')
