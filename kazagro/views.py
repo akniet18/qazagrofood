@@ -50,12 +50,16 @@ def main(razdel):
             'Брокколи', 'Капуста цветная', 'Пекинская капуста']
     # fruck = ['Апельсины "Балади"', 'Яблоки "Салтанат"', 'Яблоки "Симеренко"', 'Яблоки Ранетки', 'Груша "Форель"', 'Бананы "Кавендиш"']  
     fruck = ['Лимон "Кутдикен"','Яблоки  "Granny Smith" ', 'Персик "Никтарин"',
-             'Яблоки "Превосход"', 'Абрикос', 'Мандарины "kinnow"',
+             'Яблоки "Превосход"', 'Абрикос', 'Мандарины "murcoot" ',
              'Бананы "Кавендиш"',  'Дыня Торпедо',  "Арбуз "]
+
+    zelen = ['Петрушка (упаковка 50 гр)', 'Щавель (упаковка 50 гр)', 'Руколла (упаковка 50 гр)', 
+             'Сельдерей (упаковка 50 гр)', 'Кинза (упаковка 50 гр)', 'Петрушка (упаковка 50 гр)',
+             'Жусай (упаковка 50 гр)', 'Мята (упаковка 50 гр)', 'Листья салата (пучок)']
 
     data1 = []
     data2 = []
-    # data3 = []
+    data3 = []
     soup = BeautifulSoup(r.text, 'lxml')
     a = soup.find_all("tr")
 
@@ -83,10 +87,23 @@ def main(razdel):
             else:
                 if fruck[i] == b[1].get_text() and (b[2].get_text() == "Фрукты" or b[2].get_text() == "Экзотика" or b[2].get_text() == "фрукты"):
                     data2.append({'name': b[1].get_text(), 'price': b[10].get_text(), 'count': 0})
+    for i in range(len(zelen)):
+        for k in range(3, len(a)):
+            b = a[k].find_all('td')
+            if razdel == "roznica":
+                if zelen[i] == b[1].get_text() and b[2].get_text() == "Зелень":
+                    data3.append({'name': b[1].get_text(), 'price': b[3].get_text(), 'count': 0})
+            elif razdel == "optom":
+                if zelen[i] == b[1].get_text() and b[2].get_text() == "Зелень":
+                    data3.append({'name': b[1].get_text(), 'price': b[5].get_text(), 'count': 0})
+            else:
+                if zelen[i] == b[1].get_text() and b[2].get_text() == "Зелень":
+                    data3.append({'name': b[1].get_text(), 'price': b[10].get_text(), 'count': 0})
 
     return {
         'data1': data1,
         'data2': data2,
+        'data3': data3
     }
 
 
@@ -97,7 +114,7 @@ def base(request):
 def index(request, razdel):
     # print(razdel, "index")
     a = main(razdel)
-    return render(request, 'index.html', {'data1': a['data1'], 'data2': a['data2'], 'razdel': json.dumps(razdel)})
+    return render(request, 'index.html', {'data1': a['data1'], 'data2': a['data2'],'data3': a['data3'], 'razdel': json.dumps(razdel)})
 
 
 def addRow(request):
@@ -106,12 +123,13 @@ def addRow(request):
         if razdel == "optom":
             worksheet = sh.get_worksheet(1)
         elif razdel == "roznica":
-            worksheet = sh.get_worksheet(2)
-        else:
             worksheet = sh.get_worksheet(0)
+        else:
+            worksheet = sh.get_worksheet(2)
 
         data1 = json.loads(request.POST.get('data1'))
         data2 = json.loads(request.POST.get('data2'))
+        data3 = json.loads(request.POST.get('data3'))
         summ = request.POST.get('summ')
         name = request.POST.get('name')
         address = request.POST.get('address')
@@ -120,16 +138,21 @@ def addRow(request):
 
         ind = next_available_row(worksheet) + 1
         dateTimeObj = datetime.now()
+
+        
+        ii = worksheet.find("Сумма Заказа")
+        print(ii)
         res=[]
-        for i in range(81):
+        for i in range(ii.col-1):
             res.append("")
         ddd = dateTimeObj.strftime("%d.%M.%Y %H:%M:%S")
         # print(ind, ddd)
         
         res[0] = ind-4
         res[1] = ddd
-        indx = [11, 12, 13, 14, 15, 23, 25, 26, 19, 21, 22, 20, 18, 24, 17, 27, 29, 30, 45, 31, 44, 36, 47, 40, 43, 58, 51]
-        # indx2 = []
+        # indx = [11, 12, 13, 14, 15, 23, 25, 26, 19, 21, 22, 20, 18, 24, 17, 27, 29, 30, 45, 31, 44, 36, 47, 40, 43, 58, 51]
+        indx =   [11, 12, 13, 14, 15, 24, 26, 27, 20, 22, 23, 21, 19, 25, 18, 28, 30, 31, 48, 32, 47, 37, 50, 44, 46, 60, 61, 70, 75, 76, 80, 72, 70, 78, 79, 73]
+        indx2 = []
         # for i in data1:
         #     ii = worksheet.find(i['name'])
         #     indx2.append(ii.col)
@@ -138,17 +161,25 @@ def addRow(request):
         #     ii = worksheet.find(i['name'])
         #     # print(i)
         #     indx2.append(ii.col)
+        # for i in data3:
+        #     ii = worksheet.find(i['name'])
+        #     # print(i)
+        #     indx2.append(ii.col)
         #     # res[ii.col] = i['count']
         # print(len(indx2), indx2)
-        for i in range(len(indx)-9):
+        # indx = indx2
+        for i in range(len(indx)-18):
             # print(indx[i])
             if data1[i]['count'] != 0:
                 res[indx[i]-1] = data1[i]['count']
 
         for i in range(9):
-            # print(indx[18+i])
             if data2[i]['count'] != 0:
                 res[indx[18+i]-1] = data2[i]['count']
+
+        for i in range(9):
+            if data3[i]['count'] != 0:
+                res[indx[27+i]-1] = data3[i]['count']
 
 
         res.append(summ)
@@ -159,9 +190,9 @@ def addRow(request):
         res.append(address)
         res.append(phone)
         # print(summ)
-        # print(res)
+        print(res)
         
-        ranges = "A{}:CL{}".format(ind, ind)
+        ranges = "A{}:DB{}".format(ind, ind)
         worksheet.update(ranges, [res])
         return JsonResponse({"status": "ok"})
 
