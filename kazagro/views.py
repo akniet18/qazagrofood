@@ -140,7 +140,7 @@ def addRow(request):
 
         
         ii = worksheet.find("Сумма Заказа")
-        print(ii)
+        # print(ii)
         res=[]
         for i in range(ii.col-1):
             res.append("")
