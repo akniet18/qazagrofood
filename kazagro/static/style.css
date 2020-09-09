@@ -369,7 +369,7 @@ outline: 1px solid #272720;
     top: 0;
     z-index: 0;
     left: 0;
-    width: calc(100vw * 4.5);
+    width: calc(100vw * 6);
     height: 100%;
 }
 .section_title2{
