@@ -46,7 +46,7 @@ def main(razdel):
             'Свекла', 'Капуста', 'Огурцы "Миринда"',
             'Баклажаны',  'Кабачки', 'Болгарский перец "Светофор"',
             'Помидоры "Розовые Юсуповские"', 'Помидоры "Черри" упаковка 500 гр', 'Помидоры',
-            'Болгарский перец зеленый', 'Огурцы "Рава"',  'Жёлтая морковь', 
+            'Болгарский перец зеленый', 'Жёлтая морковь', 'Огурцы "Рава"',
             'Брокколи', 'Капуста цветная', 'Пекинская капуста']
     # fruck = ['Апельсины "Балади"', 'Яблоки "Салтанат"', 'Яблоки "Симеренко"', 'Яблоки Ранетки', 'Груша "Форель"', 'Бананы "Кавендиш"']  
     fruck = ['Лимон "Кутдикен"','Яблоки  "Granny Smith" ', 'Персик "Никтарин"',
@@ -112,7 +112,6 @@ def base(request):
 
 
 def index(request, razdel):
-    # print(razdel, "index")
     a = main(razdel)
     return render(request, 'index.html', {'data1': a['data1'], 'data2': a['data2'],'data3': a['data3'], 'razdel': json.dumps(razdel)})
 
@@ -190,7 +189,7 @@ def addRow(request):
         res.append(address)
         res.append(phone)
         # print(summ)
-        print(res)
+        # print(res)
         
         ranges = "A{}:DB{}".format(ind, ind)
         worksheet.update(ranges, [res])
