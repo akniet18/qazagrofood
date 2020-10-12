@@ -48,7 +48,7 @@ def main(razdel):
             'Помидоры "Розовые Юсуповские"', 'Помидоры "Черри" упаковка 500 гр', 'Помидоры',
             'Болгарский перец зеленый', 'Огурцы "Миринда"', 'Огурцы "Рава"',
             'Брокколи', 'Пекинская капуста', 'Капуста цветная']
-    # fruck = ['Апельсины "Балади"', 'Яблоки "Салтанат"', 'Яблоки "Симеренко"', 'Яблоки Ранетки', 'Груша "Форель"', 'Бананы "Кавендиш"']  
+            
     fruck = ['Лимон "Кутдикен"','Яблоки  "Granny Smith" ', 'Персик "Никтарин"',
              'Яблоки "Превосход"', 'Абрикос', 'Мандарины "murcoot" ',
              'Бананы "Кавендиш"',  'Дыня Торпедо',  "Арбуз "]
@@ -69,6 +69,7 @@ def main(razdel):
             if razdel == "roznica":
                 if ovosh[i] == b[1].get_text() and b[2].get_text() == "Овощи":
                     data1.append({'name': b[1].get_text(), 'price': b[3].get_text(), 'count': 0})
+                    print(b[3].get_text())
             elif razdel == "optom":
                 if ovosh[i] == b[1].get_text() and b[2].get_text() == "Овощи":
                     data1.append({'name': b[1].get_text(), 'price': b[5].get_text(), 'count': 0})
@@ -99,12 +100,12 @@ def main(razdel):
             else:
                 if zelen[i] == b[1].get_text() and b[2].get_text() == "Зелень":
                     data3.append({'name': b[1].get_text(), 'price': b[10].get_text(), 'count': 0})
-
     return {
         'data1': data1,
         'data2': data2,
         'data3': data3
     }
+    
 
 
 def base(request):

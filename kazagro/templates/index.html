@@ -1,6 +1,5 @@
 {% load static %}
 {% load mathfilters %}
-{% load cache %}
 <html>
 
 <head>
@@ -13,7 +12,6 @@
     <div class="wrapper">
         {% block content %}
         {% endblock content %}
-        {% cache 5000 foot %}
         
 
         <section class="alerts">
@@ -215,7 +213,6 @@
                 Далее
             </div>
         </div>
-        {% endcache %}
 
         <div class="modal modal1">
             <div class="modalOne">
