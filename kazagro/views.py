@@ -127,6 +127,11 @@ def addRow(request):
         else:
             worksheet = sh.get_worksheet(2)
 
+        titles = worksheet.row_values(3)
+        for i in range(len(titles)):
+            titles[i] = titles[i].strip()
+        print(titles)
+
         data1 = json.loads(request.POST.get('data1'))
         data2 = json.loads(request.POST.get('data2'))
         data3 = json.loads(request.POST.get('data3'))
@@ -138,61 +143,46 @@ def addRow(request):
 
         ind = next_available_row(worksheet) + 1
         dateTimeObj = datetime.now()
-
-        
-        ii = worksheet.find("Сумма Заказа")
+        ddd = dateTimeObj.strftime("%d.%M.%Y %H:%M:%S")
+        # ii = worksheet.find("Сумма Заказа")
         # print(ii)
         res=[]
-        for i in range(ii.col-1):
+        for i in range(len(titles)):
             res.append("")
-        ddd = dateTimeObj.strftime("%d.%M.%Y %H:%M:%S")
-        # print(ind, ddd)
-        
-        # res[0] = ind-4
         res[1] = ddd
-        # indx = [11, 12, 13, 14, 15, 23, 25, 26, 19, 21, 22, 20, 18, 24, 17, 27, 29, 30, 45, 31, 44, 36, 47, 40, 43, 58, 51]
-        indx =   [11, 12, 13, 14, 15, 24, 26, 27, 20, 22, 23, 21, 19, 25, 18, 28, 30, 31, 48, 32, 47, 37, 50, 44, 46, 60, 61, 70, 75, 76, 80, 72, 70, 78, 79, 73]
-        indx2 = []
-        # for i in data1:
-        #     ii = worksheet.find(i['name'])
-        #     indx2.append(ii.col)
-        #     # res[ii.col] = i['count']
-        # for i in data2:
-        #     ii = worksheet.find(i['name'])
-        #     # print(i)
-        #     indx2.append(ii.col)
-        # for i in data3:
-        #     ii = worksheet.find(i['name'])
-        #     # print(i)
-        #     indx2.append(ii.col)
-        #     # res[ii.col] = i['count']
-        # print(len(indx2), indx2)
-        # indx = indx2
-        for i in range(len(indx)-18):
-            # print(indx[i])
-            if data1[i]['count'] != 0:
-                res[indx[i]-1] = data1[i]['count']
+ 
+        for i in data1:
+            if i['count'] != 0:
+                if i['name'].strip() in titles:
+                    indx = titles.index(i['name'].strip())
+                    if indx != -1:
+                        res[indx] = i['count']
+                        # print(indx)
 
-        for i in range(9):
-            if data2[i]['count'] != 0:
-                res[indx[18+i]-1] = data2[i]['count']
-
-        for i in range(9):
-            if data3[i]['count'] != 0:
-                res[indx[27+i]-1] = data3[i]['count']
-
+        for i in data2:
+            if i['count'] != 0:
+                if i['name'].strip() in titles:
+                    indx = titles.index(i['name'].strip())
+                    if indx != -1:
+                        res[indx] = i['count']
+                    # print(indx)
+          
+        for i in data3:
+            if i['count'] != 0:
+                if i['name'].strip() in titles:
+                    indx = titles.index(i['name'].strip())
+                    if indx != -1:
+                        res[indx] = i['count']
+                    # print(indx)
 
         res.append(summ)
         res.append(name)
-        if razdel == "optom":
-            res.append("")
-        # res.append(area)
         res.append(address)
         res.append(phone)
         # print(summ)
         # print(res)
         
-        ranges = "A{}:DB{}".format(ind, ind)
+        ranges = "A{}:DI{}".format(ind, ind)
         worksheet.update(ranges, [res])
         return JsonResponse({"status": "ok"})
 
