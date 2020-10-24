@@ -70,7 +70,7 @@ def main(razdel):
                 if ovosh[i] == b[1].get_text() and b[2].get_text() == "Овощи":
                     data1.append({'name': b[1].get_text(), 'price': b[3].get_text(), 'count': 0})
                     print(b[3].get_text())
-            elif razdel == "optom":
+            # elif razdel == "optom":
                 if ovosh[i] == b[1].get_text() and b[2].get_text() == "Овощи":
                     data1.append({'name': b[1].get_text(), 'price': b[5].get_text(), 'count': 0})
             else:
@@ -130,7 +130,7 @@ def addRow(request):
         titles = worksheet.row_values(3)
         for i in range(len(titles)):
             titles[i] = titles[i].strip()
-        print(titles)
+        # print(titles)
 
         data1 = json.loads(request.POST.get('data1'))
         data2 = json.loads(request.POST.get('data2'))
