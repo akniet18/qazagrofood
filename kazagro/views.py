@@ -69,8 +69,8 @@ def main(razdel):
             if razdel == "roznica":
                 if ovosh[i] == b[1].get_text() and b[2].get_text() == "Овощи":
                     data1.append({'name': b[1].get_text(), 'price': b[3].get_text(), 'count': 0})
-                    print(b[3].get_text())
-            # elif razdel == "optom":
+                    # print(b[3].get_text())
+            elif razdel == "optom":
                 if ovosh[i] == b[1].get_text() and b[2].get_text() == "Овощи":
                     data1.append({'name': b[1].get_text(), 'price': b[5].get_text(), 'count': 0})
             else:
